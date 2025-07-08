@@ -158,7 +158,7 @@ const Projects: React.FC = () => {
         },
       ],
       image:
-        "/public/images/sound.PNG",
+        "/images/sound.PNG",
       demoUrl: "https://t.me/SoundrigBot/SoundRigApp",
       githubUrl: "https://github.com/SoundRigOfficial/soundrig-frontend",
       featured: false,
