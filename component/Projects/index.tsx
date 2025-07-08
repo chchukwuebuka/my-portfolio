@@ -80,8 +80,8 @@ const Projects: React.FC = () => {
       ],
       image:
         "/images/me.PNG",
-      demoUrl: "https://example.com/demo",
-      githubUrl: "https://github.com/example/repo",
+      demoUrl: "https://chukwuebuka-eg-portfolio.netlify.app/",
+      githubUrl: "https://github.com/chchukwuebuka/my-portfolio",
       featured: true,
     },
     {

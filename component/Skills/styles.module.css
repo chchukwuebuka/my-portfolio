@@ -422,6 +422,11 @@
     
       .skillCardInner {
         padding: 1.5rem;
+        text-align: center;
+      }
+
+      .skillHeader{
+            text-align: center;
       }
     
       .categoryFilter {
@@ -444,6 +449,7 @@
       .skillHeader {
         flex-direction: column;
         text-align: center;
+        align-items: center;
       }
     
       .skillIcon {
