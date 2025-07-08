@@ -57,11 +57,11 @@ const Experience: React.FC = () => {
       company: "Various Projects",
       location: "Physical",
       type: "Full-time",
-      duration: "3 year",
+      duration: "2 year",
       startDate: "2023",
       endDate: "24",
       description:
-        "Creating innovative tools and libraries for developers worldwide. Contributing to major open-source projects and maintaining several popular repositories with thousands of stars.",
+        "As a motivated Frontend Developer Intern, I thrived within the dynamic and innovative ecosystem of Genesys Tech Hub. This immersive internship was the perfect platform to gain hands-on experience engineering responsive web applications with modern technologies like React and TypeScript. The Hub's emphasis on mentorship and industry best practices was crucial as I excelled in a collaborative Agile environment, contributing directly to real-world problem-solving and feature development.",
       achievements: [
         "Maintained 6+ repositories with 1K+ stars",
         "Spoke at 3 tech conferences",
@@ -92,7 +92,7 @@ const Experience: React.FC = () => {
       startDate: "2024",
       endDate: "Present",
       description:
-        "Creating e-commerce solutions and custom web applications for clients worldwide. Specialized in modern web technologies and responsive design.",
+        "At Viicsoft, I am moving beyond foundational concepts to tackle advanced, full-stack challenges. As an integral part of the team, I contribute directly to the entire lifecycle of client projects. While continuing to deliver high-quality frontend solutions, I have significantly expanded my expertise into backend development, where I am gaining hands-on experience building robust APIs with Python and the Django REST Framework. This dynamic, hands-on role is continually honing my ability to architect and deliver scalable, end-to-end software solutions under real-world deadlines.",
       achievements: [
         "Completed 3+ client projects",
         "Achieved 98% client satisfaction rate",

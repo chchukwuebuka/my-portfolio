@@ -76,7 +76,7 @@ const Certifications: React.FC = () => {
         />
       ),
       date: "June 2024",
-      duration: "6 months",
+      duration: "9 months",
       description:
         "Intensive frontend development internship focusing on modern web technologies, collaboration, and real-world problem solving. Demonstrated strong learning abilities and technical skills.",
       skills: [

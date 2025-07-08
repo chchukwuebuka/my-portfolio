@@ -4,6 +4,7 @@ import {
   Linkedin,
   Twitter,
   Mail,
+  Phone,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -65,6 +66,12 @@ const Hero: React.FC = () => {
       icon: <Mail size={20} />,
       url: "https://mail.google.com/mail/?view=cm&to=emmanuel.henry71@gmail.com",
       color: "#ea4335",
+    },
+    {
+      name: "Phone",
+      icon: <Phone size={20} />,
+      url: "tel:+2347032401339", // Replace with your actual phone number
+      color: "#34a853", // You can choose any color you like
     },
   ];
 
