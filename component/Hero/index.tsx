@@ -3,9 +3,7 @@ import {
   Github,
   Linkedin,
   Twitter,
-  Youtube,
   Mail,
-  ExternalLink,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
