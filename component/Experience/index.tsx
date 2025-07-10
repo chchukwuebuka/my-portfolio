@@ -30,7 +30,7 @@ interface Experience {
   title: string;
   company: string;
   location: string;
-  type: "Full-time" | "Part-time" | "Contract" | "Internship";
+  //   type: "Full-time" | "Part-time" | "Contract" | "Internship";
   duration: string;
   startDate: string;
   endDate: string;
@@ -52,11 +52,36 @@ const Experience: React.FC = () => {
 
   const experiences: Experience[] = [
     {
+      id: "freelancer",
+      title: "Viicsoft",
+      company: "Full time",
+      location: "Physical",
+      // type: "Full-time",
+      duration: "1 year",
+      startDate: "2024",
+      endDate: "Present",
+      description:
+        "At Viicsoft, I am moving beyond foundational concepts to tackle advanced, full-stack challenges. As an integral part of the team, I contribute directly to the entire lifecycle of client projects. While continuing to deliver high-quality frontend solutions, I have significantly expanded my expertise into backend development, where I am gaining hands-on experience building robust APIs with Python and the Django REST Framework. This dynamic, hands-on role is continually honing my ability to architect and deliver scalable, end-to-end software solutions under real-world deadlines.",
+      achievements: [
+        "Completed 3+ client projects",
+        "Achieved 98% client satisfaction rate",
+        "Generated $50K+ in revenue",
+      ],
+      technologies: [
+        { name: "Python", icon: <SiPython size={20} />, color: "#3776ab" },
+        { name: "Next.js", icon: <SiNextdotjs size={20} />, color: "#000000" },
+        { name: "CSS", icon: <SiCss3 size={20} />, color: "#264de4" },
+        { name: "GoDaddy", icon: <SiGodaddy size={20} />, color: "#FF9900" },
+        { name: "Heroku", icon: <SiHeroku size={16} />, color: "#CC6699" },
+      ],
+      current: true,
+    },
+    {
       id: "open-source-dev",
       title: "Genesys Tech Hub",
       company: "Various Projects",
       location: "Physical",
-      type: "Full-time",
+      // type: "Full-time",
       duration: "2 year",
       startDate: "2023",
       endDate: "24",
@@ -82,37 +107,13 @@ const Experience: React.FC = () => {
       ],
       current: false,
     },
-    {
-      id: "freelancer",
-      title: "Viicsoft",
-      company: "Full time",
-      location: "Physical",
-      type: "Full-time",
-      duration: "1 year",
-      startDate: "2024",
-      endDate: "Present",
-      description:
-        "At Viicsoft, I am moving beyond foundational concepts to tackle advanced, full-stack challenges. As an integral part of the team, I contribute directly to the entire lifecycle of client projects. While continuing to deliver high-quality frontend solutions, I have significantly expanded my expertise into backend development, where I am gaining hands-on experience building robust APIs with Python and the Django REST Framework. This dynamic, hands-on role is continually honing my ability to architect and deliver scalable, end-to-end software solutions under real-world deadlines.",
-      achievements: [
-        "Completed 3+ client projects",
-        "Achieved 98% client satisfaction rate",
-        "Generated $50K+ in revenue",
-      ],
-      technologies: [
-        { name: "Python", icon: <SiPython size={20} />, color: "#3776ab" },
-        { name: "Next.js", icon: <SiNextdotjs size={20} />, color: "#000000" },
-        { name: "CSS", icon: <SiCss3 size={20} />, color: "#264de4" },
-        { name: "GoDaddy", icon: <SiGodaddy size={20} />, color: "#FF9900" },
-        { name: "Heroku", icon: <SiHeroku size={16} />, color: "#CC6699" },
-      ],
-      current: true,
-    },
+
     {
       id: "junior-freelancer",
       title: "SoundRig",
       company: "SoundRig",
       location: "Remote",
-      type: "Part-time",
+      // type: "Part-time",
       duration: "2 years",
       startDate: "2024",
       endDate: "2025",
