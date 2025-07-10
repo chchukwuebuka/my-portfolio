@@ -30,7 +30,6 @@ interface Experience {
   title: string;
   company: string;
   location: string;
-  //   type: "Full-time" | "Part-time" | "Contract" | "Internship";
   duration: string;
   startDate: string;
   endDate: string;
@@ -56,7 +55,6 @@ const Experience: React.FC = () => {
       title: "Viicsoft",
       company: "Full time",
       location: "Physical",
-      // type: "Full-time",
       duration: "1 year",
       startDate: "2024",
       endDate: "Present",
@@ -81,7 +79,6 @@ const Experience: React.FC = () => {
       title: "Genesys Tech Hub",
       company: "Various Projects",
       location: "Physical",
-      // type: "Full-time",
       duration: "2 year",
       startDate: "2023",
       endDate: "24",
@@ -113,7 +110,6 @@ const Experience: React.FC = () => {
       title: "SoundRig",
       company: "SoundRig",
       location: "Remote",
-      // type: "Part-time",
       duration: "2 years",
       startDate: "2024",
       endDate: "2025",
@@ -146,21 +142,6 @@ const Experience: React.FC = () => {
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
-
-  const getTypeColor = (type: string) => {
-    switch (type) {
-      case "Full-time":
-        return "#10B981";
-      case "Part-time":
-        return "#F59E0B";
-      case "Contract":
-        return "#8B5CF6";
-      case "Internship":
-        return "#06B6D4";
-      default:
-        return "#6B7280";
-    }
-  };
 
   const totalYears = experiences.reduce((total, exp) => {
     const years = Number.parseInt(exp.duration.split(" ")[0]);
@@ -247,16 +228,6 @@ const Experience: React.FC = () => {
                         <div className={styles.metaItem}>
                           <MapPin size={14} />
                           <span>{experience.location}</span>
-                        </div>
-                        <div
-                          className={styles.typeBadge}
-                          style={
-                            {
-                              "--type-color": getTypeColor(experience.type),
-                            } as React.CSSProperties
-                          }
-                        >
-                          {experience.type}
                         </div>
                       </div>
                     </div>
