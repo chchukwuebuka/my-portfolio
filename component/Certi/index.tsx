@@ -62,7 +62,7 @@ const Certifications: React.FC = () => {
         "https:https://www.freecodecamp.org/certification/Ebuka_0racle/javascript-algorithms-and-data-structures",
       credentialId: "Ebuka_0racle",
       featured: true,
-      color: "#0a0a23",
+      color: "",
     },
     {
       id: "genesys-frontend",
@@ -90,7 +90,7 @@ const Certifications: React.FC = () => {
       certificateImage: "/images/genesys.png",
       credentialId: "2023-Cohort",
       featured: true,
-      color: "#ff6b35",
+      color: "",
     },
   ];
 

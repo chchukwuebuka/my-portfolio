@@ -10,6 +10,8 @@ import {
   Zap,
   Star,
   TrendingUp,
+  Bot,
+  Wrench,
 } from "lucide-react";
 import {
   SiReact,
@@ -22,6 +24,12 @@ import {
   SiJavascript,
   SiDjango,
   SiTailwindcss,
+  SiNodedotjs,
+  SiPostgresql,
+  SiMongodb,
+  SiGit,
+  SiDocker,
+  SiSvelte
 } from "react-icons/si";
 import styles from "./styles.module.css";
 
@@ -134,6 +142,70 @@ const Skills: React.FC = () => {
       level: 95,
       description: "Modern Django REST Framework",
     },
+    // Tools
+    {
+      id: "ai-automation",
+      name: "AI Automation",
+      category: "Tools",
+      icon: <Bot size={48} />,
+      color: "#10b981",
+      level: 80,
+      description: "Automating workflows with AI",
+    },
+    {
+      id: "svelte",
+      name: "Svelte",
+      category: "Libraries",
+      icon: <SiSvelte size={48} />,
+      color: "#FF3E00",
+      level: 60,
+      description: "Reactive UI framework",
+    },
+    {
+      id: "nodejs",
+      name: "Node.js",
+      category: "Tools",
+      icon: <SiNodedotjs size={48} />,
+      color: "#3b82f6",
+      level: 85,
+      description: "Backend JavaScript runtime",
+    },
+    {
+      id: "postgresql",
+      name: "PostgreSQL",
+      category: "Databases",
+      icon: <SiPostgresql size={48} />,
+      color: "#336791",
+      level: 85,
+      description: "Powerful open-source relational database",
+    },
+    {
+      id: "mongodb",
+      name: "MongoDB",
+      category: "Databases",
+      icon: <SiMongodb size={48} />,
+      color: "#3b82f6",
+      level: 75,
+      description: "NoSQL document database",
+    },
+    {
+      id: "git",
+      name: "Git",
+      category: "Tools",
+      icon: <SiGit size={48} />,
+      color: "#F05032",
+      level: 90,
+      description: "Distributed version control system",
+    },
+    {
+      id: "docker",
+      name: "Docker",
+      category: "Tools",
+      icon: <SiDocker size={48} />,
+      color: "#2496ED",
+      level: 70,
+      description: "Containerization platform",
+    },
   ];
 
   const categories = [
@@ -145,6 +217,8 @@ const Skills: React.FC = () => {
     },
     { id: "Markup & Style", name: "Design", icon: <Palette size={16} /> },
     { id: "Libraries", name: "Libraries", icon: <Library size={16} /> },
+    { id: "Tools", name: "Tools", icon: <Wrench size={16} /> },
+    { id: "Databases", name: "Databases", icon: <Library size={16} /> }, // Added Databases category
   ];
 
   const filteredSkills = skills.filter((skill) => {

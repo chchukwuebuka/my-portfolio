@@ -1,15 +1,12 @@
 "use client";
 
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MapPin,
   Calendar,
-  Clock,
   Briefcase,
-  Award,
-  TrendingUp,
-  Users,
+  CheckCircle2,
+  Sparkles,
 } from "lucide-react";
 import styles from "./styles.module.css";
 import {
@@ -54,23 +51,23 @@ const Experience: React.FC = () => {
       id: "freelancer",
       title: "Viicsoft",
       company: "Full time",
-      location: "Physical",
-      duration: "1 year",
+      location: "hybrid",
+      duration: "2 Years",
       startDate: "2024",
       endDate: "Present",
       description:
-        "At Viicsoft, I am moving beyond foundational concepts to tackle advanced, full-stack challenges. As an integral part of the team, I contribute directly to the entire lifecycle of client projects. While continuing to deliver high-quality frontend solutions, I have significantly expanded my expertise into backend development, where I am gaining hands-on experience building robust APIs with Python and the Django REST Framework. This dynamic, hands-on role is continually honing my ability to architect and deliver scalable, end-to-end software solutions under real-world deadlines.",
+        "At Viicsoft, I have evolved beyond foundational development into solving advanced, full-stack engineering challenges. As a core member of the team, I contribute across the entire lifecycle of client and in-house projects from architecture and UI/UX design to backend systems and deployment. While continuing to deliver high quality frontend solutions, I have expanded deeply into backend development, building robust, production ready APIs using Python and the Django REST Framework. Beyond traditional development, I actively integrate AI driven automation into our systems leveraging AI for intelligent workflows, process optimization, smart content generation, and operational efficiency across platforms. This hands on, innovation-driven role continuously sharpens my ability to design scalable, end-to-end software solutions, automate complex processes, and deliver high-performance systems under real-world deadlines.",
       achievements: [
-        "Completed 3+ client projects",
+        "Completed 5+ client projects",
         "Achieved 98% client satisfaction rate",
         "Generated $50K+ in revenue",
       ],
       technologies: [
-        { name: "Python", icon: <SiPython size={20} />, color: "#3776ab" },
-        { name: "Next.js", icon: <SiNextdotjs size={20} />, color: "#000000" },
-        { name: "CSS", icon: <SiCss3 size={20} />, color: "#264de4" },
-        { name: "GoDaddy", icon: <SiGodaddy size={20} />, color: "#FF9900" },
-        { name: "Heroku", icon: <SiHeroku size={16} />, color: "#CC6699" },
+        { name: "Python", icon: <SiPython size={18} />, color: "#3776ab" },
+        { name: "Next.js", icon: <SiNextdotjs size={18} />, color: "#ffffff" },
+        { name: "CSS", icon: <SiCss3 size={18} />, color: "#264de4" },
+        { name: "GoDaddy", icon: <SiGodaddy size={18} />, color: "#FF9900" },
+        { name: "Heroku", icon: <SiHeroku size={18} />, color: "#CC6699" },
       ],
       current: true,
     },
@@ -80,7 +77,7 @@ const Experience: React.FC = () => {
       company: "Various Projects",
       location: "Physical",
       duration: "2 year",
-      startDate: "2023",
+      startDate: "2022",
       endDate: "24",
       description:
         "As a motivated Frontend Developer Intern, I thrived within the dynamic and innovative ecosystem of Genesys Tech Hub. This immersive internship was the perfect platform to gain hands-on experience engineering responsive web applications with modern technologies like React and TypeScript. The Hub's emphasis on mentorship and industry best practices was crucial as I excelled in a collaborative Agile environment, contributing directly to real-world problem-solving and feature development.",
@@ -91,30 +88,29 @@ const Experience: React.FC = () => {
       technologies: [
         {
           name: "JavaScript",
-          icon: <SiJavascript size={20} />,
+          icon: <SiJavascript size={18} />,
           color: "#F7DF1E",
         },
         {
           name: "TypeScript",
-          icon: <SiTypescript size={20} />,
+          icon: <SiTypescript size={18} />,
           color: "#3178C6",
         },
-        { name: "React", icon: <SiReact size={20} />, color: "#61DAFB" },
-        { name: "CSS", icon: <SiCss3 size={20} />, color: "#264de4" },
+        { name: "React", icon: <SiReact size={18} />, color: "#61DAFB" },
+        { name: "CSS", icon: <SiCss3 size={18} />, color: "#264de4" },
       ],
       current: false,
     },
-
     {
       id: "junior-freelancer",
       title: "SoundRig",
       company: "SoundRig",
       location: "Remote",
-      duration: "2 years",
+      duration: "1 year",
       startDate: "2024",
       endDate: "2025",
       description:
-        "Building responsive web applications and learning modern development practices. Focused on creating user-friendly interfaces and optimizing performance.",
+        "I led the frontend implementation of a Web3-based music platform built on blockchain technology, developing responsive and intuitive user interfaces that seamlessly interact with decentralized systems. My focus was on delivering a smooth user experience while integrating wallet connectivity, smart contract interactions, and real-time performance optimization. Through this project, I strengthened my expertise in modern frontend architecture, decentralized application (dApp) workflows, and building high-performance, user-centered web applications.",
       achievements: [
         "Completed 15+ small projects",
         "Learned 8+ programming languages",
@@ -123,16 +119,16 @@ const Experience: React.FC = () => {
       technologies: [
         {
           name: "JavaScript",
-          icon: <SiJavascript size={20} />,
+          icon: <SiJavascript size={18} />,
           color: "#f7df1e",
         },
-        { name: "React", icon: <SiReact size={20} />, color: "#61dafb" },
+        { name: "React", icon: <SiReact size={18} />, color: "#61dafb" },
         {
           name: "PostgreSQL",
-          icon: <SiPostgresql size={20} />,
+          icon: <SiPostgresql size={18} />,
           color: "#336791",
         },
-        { name: "Git", icon: <SiGit size={20} />, color: "#F05032" },
+        { name: "Git", icon: <SiGit size={18} />, color: "#F05032" },
       ],
       current: false,
     },
@@ -143,11 +139,6 @@ const Experience: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const totalYears = experiences.reduce((total, exp) => {
-    const years = Number.parseInt(exp.duration.split(" ")[0]);
-    return total + years;
-  }, 0);
-
   return (
     <section className={styles.experienceSection} id="experience">
       <div className={styles.experienceContainer}>
@@ -157,29 +148,14 @@ const Experience: React.FC = () => {
             isVisible ? styles.visible : ""
           }`}
         >
-          <div className={styles.headerContent}>
-            <div className={styles.headerIcon}>
-              <Briefcase size={32} />
-            </div>
-            <h2 className={styles.experienceTitle}>Professional Experience</h2>
-            <p className={styles.experienceSubtitle}>
-              My journey through different roles and technologies
-            </p>
+          <div className={styles.headerTag}>
+            <Sparkles size={16} />
+            Career Path
           </div>
-          <div className={styles.headerStats}>
-            <div className={styles.statItem}>
-              <TrendingUp size={20} />
-              <span>{totalYears}+ Years Experience</span>
-            </div>
-            <div className={styles.statItem}>
-              <Users size={20} />
-              <span>{experiences.length} Positions</span>
-            </div>
-            <div className={styles.statItem}>
-              <Award size={20} />
-              <span>90+ Projects Completed</span>
-            </div>
-          </div>
+          <h2 className={styles.experienceTitle}>Professional Experience</h2>
+          <p className={styles.experienceSubtitle}>
+            A timeline of my professional journey, highlighting the roles, projects, and technologies that have shaped my expertise.
+          </p>
         </div>
 
         {/* Timeline */}
@@ -198,22 +174,19 @@ const Experience: React.FC = () => {
               }`}
               style={
                 {
-                  "--animation-delay": `${index * 0.2}s`,
+                  "--animation-delay": `${index * 0.15}s`,
                 } as React.CSSProperties
               }
+              onMouseEnter={() => setActiveExperience(experience.id)}
+              onMouseLeave={() => setActiveExperience(null)}
             >
               <div className={styles.timelineMarker}>
-                <div
-                  className={styles.markerDot}
-                  onMouseEnter={() => setActiveExperience(experience.id)}
-                  onMouseLeave={() => setActiveExperience(null)}
-                >
+                <div className={styles.markerDot}>
                   {experience.current && (
                     <div className={styles.pulseRing}></div>
                   )}
-                  <Briefcase size={16} />
+                  <Briefcase size={20} />
                 </div>
-                <div className={styles.markerLine}></div>
               </div>
 
               <div className={styles.experienceCard}>
@@ -227,29 +200,21 @@ const Experience: React.FC = () => {
                       <div className={styles.jobMeta}>
                         <div className={styles.metaItem}>
                           <MapPin size={14} />
-                          <span>{experience.location}</span>
+                          {experience.location}
                         </div>
                       </div>
                     </div>
                   </div>
-                  {experience.current && (
-                    <div className={styles.currentBadge}>
-                      <div className={styles.currentDot}></div>
-                      <span>Current</span>
+                  <div className={styles.dateInfo}>
+                    <div className={styles.dateRange}>
+                      <Calendar size={14} />
+                      {experience.startDate} — {experience.endDate}
                     </div>
-                  )}
-                </div>
-
-                <div className={styles.durationInfo}>
-                  <div className={styles.durationItem}>
-                    <Calendar size={14} />
-                    <span>
-                      {experience.startDate} - {experience.endDate}
-                    </span>
-                  </div>
-                  <div className={styles.durationItem}>
-                    <Clock size={14} />
-                    <span>{experience.duration}</span>
+                    {experience.current && (
+                      <div className={styles.currentBadge}>
+                        • Ongoing
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -257,25 +222,27 @@ const Experience: React.FC = () => {
                   {experience.description}
                 </p>
 
-                <div className={styles.achievementsSection}>
-                  <h4 className={styles.achievementsTitle}>Key Achievements</h4>
-                  <ul className={styles.achievementsList}>
-                    {experience.achievements.map(
-                      (achievement, achievementIndex) => (
-                        <li
-                          key={achievementIndex}
-                          className={styles.achievementItem}
-                        >
-                          <div className={styles.achievementBullet}></div>
-                          <span>{achievement}</span>
-                        </li>
-                      )
-                    )}
-                  </ul>
-                </div>
+                {experience.achievements.length > 0 && (
+                  <div className={styles.achievementsSection}>
+                    <h4 className={styles.sectionTitle}>Key Highlights</h4>
+                    <ul className={styles.achievementsList}>
+                      {experience.achievements.map(
+                        (achievement, achievementIndex) => (
+                          <li
+                            key={achievementIndex}
+                            className={styles.achievementItem}
+                          >
+                            <CheckCircle2 size={18} className={styles.achievementIcon} />
+                            <span>{achievement}</span>
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  </div>
+                )}
 
                 <div className={styles.technologiesSection}>
-                  <h4 className={styles.techTitle}>Technologies Used</h4>
+                  <h4 className={styles.sectionTitle}>Technologies</h4>
                   <div className={styles.techStack}>
                     {experience.technologies.map((tech, techIndex) => (
                       <div
@@ -284,7 +251,6 @@ const Experience: React.FC = () => {
                         style={
                           { "--tech-color": tech.color } as React.CSSProperties
                         }
-                        title={tech.name}
                       >
                         <span className={styles.techIcon}>{tech.icon}</span>
                         <span className={styles.techName}>{tech.name}</span>
@@ -296,40 +262,6 @@ const Experience: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* Summary */}
-        {/* <div
-          className={`${styles.experienceSummary} ${
-            isVisible ? styles.visible : ""
-          }`}
-        >
-          <div className={styles.summaryCard}>
-            <div className={styles.summaryHeader}>
-              <Award size={24} />
-              <h3>Career Highlights</h3>
-            </div>
-            <div className={styles.summaryStats}>
-              <div className={styles.summaryStat}>
-                <div className={styles.statNumber}>90+</div>
-                <div className={styles.statLabel}>Projects Completed</div>
-              </div>
-              <div className={styles.summaryStat}>
-                <div className={styles.statNumber}>12+</div>
-                <div className={styles.statLabel}>Technologies Mastered</div>
-              </div>
-              <div className={styles.summaryStat}>
-                <div className={styles.statNumber}>50+</div>
-                <div className={styles.statLabel}>
-                  Open Source Contributions
-                </div>
-              </div>
-              <div className={styles.summaryStat}>
-                <div className={styles.statNumber}>98%</div>
-                <div className={styles.statLabel}>Client Satisfaction</div>
-              </div>
-            </div>
-          </div>
-        </div> */}
       </div>
     </section>
   );

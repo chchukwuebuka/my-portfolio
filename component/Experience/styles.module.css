@@ -1,612 +1,421 @@
 .experienceSection {
-      padding: 6rem 0;
-      background: var(--bg-primary);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .experienceSection::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
-      pointer-events: none;
-    }
-    
-    .experienceContainer {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      position: relative;
-      z-index: 1;
-    }
-    
-    /* Header */
-    .experienceHeader {
-      text-align: center;
-      margin-bottom: 4rem;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
-    }
-    
-    .experienceHeader.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .headerContent {
-      margin-bottom: 2rem;
-    }
-    
-    .headerIcon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, #10b981, #059669);
-      border-radius: 20px;
-      margin-bottom: 1.5rem;
-      color: white;
-      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
-      animation: float 3s ease-in-out infinite;
-    }
-    
-    .experienceTitle {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      font-weight: 800;
-      margin-bottom: 1rem;
-      background: var(--gradient-text);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .experienceSubtitle {
-      font-size: 1.2rem;
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-    
-    .headerStats {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    
-    .statItem {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 50px;
-      color: #10b981;
-      font-weight: 600;
-      backdrop-filter: blur(10px);
-    }
-    
-    /* Timeline */
-    .timelineContainer {
-      position: relative;
-      opacity: 0;
-      transition: all 0.8s ease 0.4s;
-    }
-    
-    .timelineContainer.visible {
-      opacity: 1;
-    }
-    
-    .timelineLine {
-      position: absolute;
-      left: 2rem;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, #10b981, rgba(16, 185, 129, 0.3));
-      border-radius: 1px;
-    }
-    
-    .timelineItem {
-      position: relative;
-      margin-bottom: 3rem;
-      animation: slideInLeft 0.8s ease var(--animation-delay) both;
-    }
-    
-    .timelineItem:last-child {
-      margin-bottom: 0;
-    }
-    
-    .timelineMarker {
-      position: absolute;
-      left: 0;
-      top: 2rem;
-      z-index: 2;
-    }
-    
-    .markerDot {
-      position: relative;
-      width: 4rem;
-      height: 4rem;
-      background: var(--card-bg);
-      border: 3px solid #10b981;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #10b981;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-    
-    .timelineItem:hover .markerDot {
-      background: #10b981;
-      color: white;
-      transform: scale(1.1);
-      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
-    }
-    
-    .pulseRing {
-      position: absolute;
-      top: -8px;
-      left: -8px;
-      right: -8px;
-      bottom: -8px;
-      border: 2px solid #10b981;
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-    
-    .markerLine {
-      position: absolute;
-      top: 50%;
-      left: 100%;
-      width: 2rem;
-      height: 2px;
-      background: #10b981;
-      transform: translateY(-50%);
-    }
-    
-    /* Experience Card */
+  padding: 8rem 0;
+  background: var(--bg-primary, #050505);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  font-family: inherit;
+}
 
-    .experienceCard {
-      margin-left: 6rem;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 1.5rem;
-      position: relative;
-      transition: all 0.4s ease;
-      backdrop-filter: blur(20px);
-      overflow: hidden;
-    }
-    
-    .timelineItem:hover .experienceCard {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-      border-color: #10b981;
-    }
-    
-    .timelineItem.active .experienceCard {
-      border-color: #10b981;
-      box-shadow: 0 15px 35px rgba(16, 185, 129, 0.2);
-    }
-    
-    .cardHeader {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 1.5rem;
-    }
-    
-    .jobInfo {
-      flex: 1;
-    }
-    
-    .jobTitle {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .companyInfo {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    
-    .companyName {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      font-weight: 600;
-    }
-    
-    .jobMeta {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    
-    .metaItem {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-    
-    .typeBadge {
-      padding: 0.25rem 0.75rem;
-      background: var(--type-color);
-      color: white;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    .currentBadge {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: #10b981;
-      color: white;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
-    }
-    
-    .currentDot {
-      width: 8px;
-      height: 8px;
-      background: white;
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-    
-    .durationInfo {
-      display: flex;
-      gap: 2rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-    
-    .durationItem {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-    
-    .jobDescription {
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-      font-size: 1rem;
-    }
-    
-    /* Achievements */
-    .achievementsSection {
-      margin-bottom: 2rem;
-    }
-    
-    .achievementsTitle {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .achievementsTitle::before {
-      content: "🏆";
-      font-size: 1rem;
-    }
-    
-    .achievementsList {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-    .achievementItem {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 0.75rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-    
-    .achievementBullet {
-      width: 6px;
-      height: 6px;
-      background: #10b981;
-      border-radius: 50%;
-      margin-top: 0.5rem;
-      flex-shrink: 0;
-    }
-    
-    /* Technologies */
-    .technologiesSection {
-      margin-bottom: 1rem;
-    }
-    
-    .techTitle {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .techTitle::before {
-      content: "⚡";
-      font-size: 1rem;
-    }
-    
-    .techStack {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-    
-    .techBadge {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--tech-color);
-      border-radius: 50px;
-      color: var(--tech-color);
-      font-size: 0.8rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    
-    .techBadge:hover {
-      background: var(--tech-color);
-      color: white;
-      transform: translateY(-2px);
-    }
-    
-    .techIcon {
-      font-size: 0.9rem;
-    }
-    
-    .techName {
-      font-size: 0.8rem;
-    }
-    
-    /* Card Overlay */
-    .cardOverlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(5, 150, 105, 0.8));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: all 0.3s ease;
-      border-radius: 20px;
-    }
-    
-    .timelineItem:hover .cardOverlay {
-      opacity: 1;
-    }
-    
-    .overlayContent {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      color: white;
-      font-weight: 600;
-      transform: translateY(20px);
-      transition: transform 0.3s ease;
-    }
-    
-    .timelineItem:hover .overlayContent {
-      transform: translateY(0);
-    }
-    
-    /* Experience Summary */
-    .experienceSummary {
-      margin-top: 4rem;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease 0.8s;
-    }
-    
-    .experienceSummary.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .summaryCard {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 2rem;
-      backdrop-filter: blur(20px);
-    }
-    
-    .summaryHeader {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      color: #10b981;
-    }
-    
-    .summaryHeader h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-    
-    .summaryStats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-    }
-    
-    .summaryStat {
-      text-align: center;
-    }
-    
-    .statNumber {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #10b981;
-      margin-bottom: 0.5rem;
-    }
-    
-    .statLabel {
-      color: var(--text-secondary);
-      font-weight: 600;
-    }
-    
-    /* Animations */
-    @keyframes float {
-      0%,
-      100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-    
-    @keyframes slideInLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    
-    @keyframes pulse {
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 0.7;
-        transform: scale(1.1);
-      }
-    }
-    
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .experienceSection {
-        padding: 4rem 0;
-      }
-    
-      .experienceContainer {
-        padding: 0 1rem;
-      }
-    
-      .timelineLine {
-        left: 1.5rem;
-      }
-    
-      .markerDot {
-        width: 3rem;
-        height: 3rem;
-      }
-    
-      .markerLine {
-        width: 1.5rem;
-      }
-    
-      .experienceCard {
-        margin-left: 4.5rem;
-        padding: 1.5rem;
-      }
-    
-      .headerStats {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-      }
-    
-      .jobMeta {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-      }
-    
-      .durationInfo {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-    
-      .summaryStats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .timelineLine {
-        left: 1rem;
-      }
-    
-      .markerDot {
-        width: 2.5rem;
-        height: 2.5rem;
-      }
-    
-      .markerLine {
-        width: 1rem;
-      }
-    
-      .experienceCard {
-        margin-left: 3.5rem;
-        padding: 1rem;
-      }
-    
-      .cardHeader {
-        flex-direction: column;
-        gap: 1rem;
-      }
-    
-      .currentBadge {
-        align-self: flex-start;
-      }
-    
-      .summaryStats {
-        grid-template-columns: 1fr;
-      }
-    
-      .statNumber {
-        font-size: 2rem;
-      }
-    }
-    
+/* Add a subtle glow in the background */
+.experienceSection::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.experienceContainer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.experienceHeader {
+  text-align: center;
+  margin-bottom: 5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.experienceHeader.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.headerTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border-radius: 100px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.experienceTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.experienceSubtitle {
+  font-size: 1.15rem;
+  color: #a1a1aa;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Timeline Setup */
+.timelineContainer {
+  position: relative;
+  opacity: 0;
+  transition: opacity 1s ease-out 0.3s;
+}
+
+.timelineContainer.visible {
+  opacity: 1;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 2rem;
+  top: 2rem;
+  bottom: 2rem;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(59, 130, 246, 0.5), rgba(59, 130, 246, 0.1) 80%, transparent);
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 4rem;
+  animation: fadeUp 0.8s ease-out var(--animation-delay) both;
+}
+
+.timelineItem:last-child {
+  margin-bottom: 0;
+}
+
+.timelineMarker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+.markerDot {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a1a1aa;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.timelineItem.active .markerDot,
+.timelineItem:hover .markerDot {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: #3b82f6;
+  color: #3b82f6;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+.pulseRing {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border: 1px solid rgba(59, 130, 246, 0.5);
+  border-radius: 50%;
+  animation: ripple 2s linear infinite;
+}
+
+/* Experience Card */
+.experienceCard {
+  margin-left: 7rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2.5rem;
+  position: relative;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.timelineItem:hover .experienceCard {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(59, 130, 246, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.jobInfo {
+  flex: 1;
+}
+
+.jobTitle {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #f4f4f5;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.companyInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.companyName {
+  font-size: 1.1rem;
+  color: #10b981;
+  font-weight: 600;
+}
+
+.jobMeta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.dateInfo {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.dateRange {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50px;
+  color: #d4d4d8;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.timelineItem.active .dateRange,
+.timelineItem:hover .dateRange {
+  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(59, 130, 246, 0.05);
+  color: #3b82f6;
+}
+
+.currentBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #10b981;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.6rem;
+}
+
+.jobDescription {
+  color: #a1a1aa;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+/* Achievements */
+.achievementsSection {
+  margin-bottom: 2.5rem;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.sectionTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #e4e4e7;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.achievementsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.achievementItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: #a1a1aa;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.achievementItem:hover {
+  color: #e4e4e7;
+}
+
+.achievementIcon {
+  color: #10b981;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Technologies */
+.techStack {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.techBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  color: #e4e4e7;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.techBadge:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--tech-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.techIcon {
+  font-size: 1.1rem;
+  color: var(--tech-color);
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .experienceSection {
+    padding: 5rem 0;
+  }
+
+  .timelineLine {
+    left: 1rem;
+  }
+
+  .markerDot {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .timelineMarker {
+    top: 1rem;
+  }
+
+  .experienceCard {
+    margin-left: 4rem;
+    padding: 1.5rem;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .dateInfo {
+    align-items: flex-start;
+  }
+
+  .achievementsList {
+    grid-template-columns: 1fr;
+  }
+
+  .experienceTitle {
+    font-size: 2.25rem;
+  }
+}

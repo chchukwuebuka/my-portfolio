@@ -20,6 +20,7 @@ import {
   SiNextdotjs,
   SiPython,
   SiJavascript,
+  SiNodedotjs,
 } from "react-icons/si";
 
 interface Project {
@@ -61,30 +62,6 @@ const Projects: React.FC = () => {
 
   const projects: Project[] = [
     {
-      id: "slick-portfolio-1",
-      title: "Slick Portfolio",
-      subtitle: "Website Template",
-      description:
-        "A modern, responsive portfolio website built with TypeScript and React. Features dark mode, smooth animations, and optimized performance.",
-      duration: "1 day",
-      date: "July 2025",
-      status: "Now",
-      technologies: [
-        {
-          name: "TypeScript",
-          icon: <SiTypescript size={24} />,
-          color: "#3178C6",
-        },
-        { name: "React", icon: <SiReact size={24} />, color: "#61DAFB" },
-        { name: "Css", icon: <SiCss3 size={24} />, color: "#CC6699" },
-      ],
-      image:
-        "/images/me.PNG",
-      demoUrl: "https://chukwuebuka-eg-portfolio.netlify.app/",
-      githubUrl: "https://github.com/chchukwuebuka/my-portfolio",
-      featured: true,
-    },
-    {
       id: "Kuepass",
       title: "Kuepass",
       subtitle: "Event Management App",
@@ -108,6 +85,137 @@ const Projects: React.FC = () => {
       demoUrl: "https://kuepass.com/",
       githubUrl: "https://github.com/chchukwuebuka/kuepassApp",
       featured: false,
+    },
+    {
+      id: "soundRig",
+      title: "soundRig",
+      subtitle: "soundRig",
+      description:
+        "I led the frontend implementation of a Web3-based music platform built on blockchain technology, developing responsive and intuitive user interfaces that seamlessly interact with decentralized systems. My focus was on delivering a smooth user experience while integrating wallet connectivity, smart contract interactions, and real-time performance optimization. Through this project, I strengthened my expertise in modern frontend architecture, decentralized application (dApp) workflows, and building high-performance, user-centered web applications.",
+      duration: "1 week",
+      date: "Novenmber 2024",
+      status: "Completed",
+      technologies: [
+        { name: "Python", icon: <SiPython size={24} />, color: "#3776AB" },
+        {
+          name: "TypeScript",
+          icon: <SiTypescript size={24} />,
+          color: "#3178C6",
+        },
+      ],
+      image:
+        "/images/sound.PNG",
+      demoUrl: "https://t.me/SoundrigBot/SoundRigApp",
+      githubUrl: "https://github.com/SoundRigOfficial/soundrig-frontend",
+      featured: false,
+    },
+    {
+      id: "viicsoft",
+      title: "Viicsoft",
+      subtitle: "Digital Solutions Agency",
+      description:
+        "Building smart digital solutions for a modern, AI-Driven world. A corporate website for a technology agency showcasing services and industry insights.",
+      duration: "3 weeks",
+      date: "August 2023",
+      status: "Completed",
+      technologies: [
+        { name: "React", icon: <SiReact size={24} />, color: "#61DAFB" },
+        {
+          name: "Javascript",
+          icon: <SiJavascript size={24} />,
+          color: "#F7DF1E",
+        },
+        { name: "Css", icon: <SiCss3 size={24} />, color: "#CC6699" },
+        { name: "Node.js", icon: <SiNodedotjs size={24} />, color: "#339933" },
+      ],
+      image: "/images/viicsoft.png",
+      demoUrl: "https://viicsoft.dev/",
+      githubUrl: "https://github.com/chchukwuebuka/Viicsoft",
+      featured: false,
+    },
+    {
+      id: "crisptv",
+      title: "CrispTV",
+      subtitle: "Live Event Coverage",
+      description:
+        "Crisp TV delivers professional live event coverage, from pre-production planning to multi-camera recording, live streaming, and post-production highlights.",
+      duration: "4 weeks",
+      date: "February 2024",
+      status: "Completed",
+      technologies: [
+        { name: "Next.js", icon: <SiNextdotjs size={24} />, color: "#000000" },
+        {
+          name: "TypeScript",
+          icon: <SiTypescript size={24} />,
+          color: "#3178C6",
+        },
+        { name: "Css", icon: <SiCss3 size={24} />, color: "#CC6699" },
+        { name: "Node.js", icon: <SiNodedotjs size={24} />, color: "#339933" },
+      ],
+      image: "/images/crisptv.png",
+      demoUrl: "https://crisptv-professional.netlify.app/",
+      githubUrl: "https://github.com/chchukwuebuka/CrispTV",
+      featured: true,
+    },
+    {
+      id: "winner-portfolio",
+      title: "Winner Chikezie",
+      subtitle: "Product Designer Portfolio",
+      description:
+        "A sleek, modern portfolio for a Lead Product Designer designed to highlight case studies, experience, and creative design concepts.",
+      duration: "2 weeks",
+      date: "May 2023",
+      status: "Completed",
+      technologies: [
+        { name: "Next.js", icon: <SiNextdotjs size={24} />, color: "#000000" },
+        { name: "React", icon: <SiReact size={24} />, color: "#61DAFB" },
+        { name: "Css", icon: <SiCss3 size={24} />, color: "#CC6699" },
+      ],
+      image: "/images/winner.png",
+      demoUrl: "https://winner-chikezie-porfolio.netlify.app/",
+      githubUrl: "https://github.com/chchukwuebuka/winner-portfolio",
+      featured: false,
+    },
+    {
+      id: "cookeaze",
+      title: "Cookeaze",
+      subtitle: "AI Automation Contribution",
+      description:
+        "Cookeaze is an AI-powered cooking assistant designed to simplify meal planning and food preparation. I contributed specifically to building and refining its AI automation systems developing intelligent workflows for personalized meal plans, recipe generation, dietary preference handling, and contextual user interactions. My work focused on streamlining backend processes, improving AI response accuracy, and enhancing the platform’s ability to deliver dynamic, user-specific cooking guidance at scale.",
+      duration: "Ongoing",
+      date: "2024",
+      status: "In Progress",
+      technologies: [
+        { name: "Python", icon: <SiPython size={24} />, color: "#3776AB" },
+        { name: "React", icon: <SiReact size={24} />, color: "#61DAFB" },
+      ],
+      image: "/images/cookeaze.jpg",
+      demoUrl: "https://cookeaze.app/",
+      featured: true,
+    },
+    {
+      id: "slick-portfolio-1",
+      title: "Slick Portfolio",
+      subtitle: "Website Template",
+      description:
+        "A modern, responsive portfolio website built with TypeScript and React. Features dark mode, smooth animations, and optimized performance.",
+      duration: "1 day",
+      date: "July 2025",
+      status: "Now",
+      technologies: [
+        {
+          name: "TypeScript",
+          icon: <SiTypescript size={24} />,
+          color: "#3178C6",
+        },
+        { name: "React", icon: <SiReact size={24} />, color: "#61DAFB" },
+        { name: "Css", icon: <SiCss3 size={24} />, color: "#CC6699" },
+      ],
+      image:
+        "/images/me.PNG",
+      demoUrl: "https://chukwuebuka-eg-portfolio.netlify.app/",
+      githubUrl: "https://github.com/chchukwuebuka/my-portfolio",
+      featured: true,
     },
     {
       id: "CRP Church",
@@ -139,30 +247,6 @@ const Projects: React.FC = () => {
       githubUrl: "https://github.com/chchukwuebuka/CRP_Church",
       featured: true,
     },
-    {
-      id: "soundRig",
-      title: "soundRig",
-      subtitle: "soundRig",
-      description:
-        "SoundRig is a decentralized, blockchain-powered music platform built to empower independent artists and fans.",
-      duration: "1 week",
-      date: "Novenmber 2024",
-      status: "Completed",
-      technologies: [
-        { name: "Css", icon: <SiCss3 size={24} />, color: "#CC6699" },
-        { name: "Next.js", icon: <SiNextdotjs size={24} />, color: "#000000" },
-        {
-          name: "TypeScript",
-          icon: <SiTypescript size={24} />,
-          color: "#3178C6",
-        },
-      ],
-      image:
-        "/images/sound.PNG",
-      demoUrl: "https://t.me/SoundrigBot/SoundRigApp",
-      githubUrl: "https://github.com/SoundRigOfficial/soundrig-frontend",
-      featured: false,
-    },
   ];
 
   const allTechnologies = [
@@ -190,7 +274,7 @@ const Projects: React.FC = () => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Now":
-        return "#10B981";
+        return "#3b82f6";
       case "Completed":
         return "#3B82F6";
       case "In Progress":

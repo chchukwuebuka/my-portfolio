@@ -7,6 +7,7 @@ import {
   Phone,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
 } from "lucide-react";
 import {
   SiReact,
@@ -165,10 +166,9 @@ const Hero: React.FC = () => {
               <div className={styles.roleUnderline}></div>
             </div>
             <p className={styles.description}>
-              Passionate about creating exceptional digital experiences through
-              clean code and innovative solutions. I specialize in modern web
-              technologies and love turning complex problems into simple,
-              beautiful designs.
+              I craft clean, user-focused digital experiences with modern web
+              technologies turning complex problems into simple, beautiful,
+              high-performing solutions.
             </p>
             <div className={styles.socialLinks}>
               {socialLinks.map((social) => (
@@ -187,13 +187,6 @@ const Hero: React.FC = () => {
                 </a>
               ))}
             </div>
-            {/* <div className={styles.ctaButtons}>
-              <button className={styles.primaryButton}>
-                <span>View My Work</span>
-                <ExternalLink size={18} />
-              </button>
-              <button className={styles.secondaryButton}>Download CV</button>
-            </div> */}
           </div>
         </div>
 
@@ -246,7 +239,7 @@ const Hero: React.FC = () => {
       </div>
       <div className={styles.scrollIndicator}>
         <div className={styles.scrollText}>Scroll to explore</div>
-        <div className={styles.scrollArrow}></div>
+        <ChevronDown size={24} className={styles.scrollArrowIcon} />
       </div>
     </section>
   );
