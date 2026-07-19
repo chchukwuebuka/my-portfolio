@@ -104,7 +104,7 @@ const Certifications: React.FC = () => {
   };
 
   return (
-    <section className={styles.certificationsSection} id="certifications">
+    <section className={styles.certificationsSection} id="education">
       <div className={styles.certificationsContainer}>
         {/* Header */}
         <div

@@ -1,23 +1,41 @@
-import Navbar from "../component/Navbar";
-import Hero from "../component/Hero";
-import Skills from "../component/Skills";
-import Projects from "../component/Projects";
-import Experience from "../component/Experience";
-import Certification from "../component/Certi";
-import Wave from "../component/Wave"
-// import Wave from "../component/Wave";
-import "./index.css"
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
 
-export default function Home() {
+const CharacterModel = lazy(() => import("./components/Character"));
+const MainContainer = lazy(() => import("./components/MainContainer"));
+const MyWorks = lazy(() => import("./pages/MyWorks"));
+import { LoadingProvider } from "./context/LoadingProvider";
+
+const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Hero />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Certification />
-      <Wave />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <LoadingProvider>
+              <Suspense>
+                <MainContainer>
+                  <Suspense>
+                    <CharacterModel />
+                  </Suspense>
+                </MainContainer>
+              </Suspense>
+            </LoadingProvider>
+          }
+        />
+        <Route
+          path="/myworks"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <MyWorks />
+            </Suspense>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
+
+export default App;

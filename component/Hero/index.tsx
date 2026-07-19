@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
 import {
-  Github,
-  Linkedin,
-  Twitter,
   Mail,
   Phone,
   ChevronLeft,
   ChevronRight,
   ChevronDown,
 } from "lucide-react";
+import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 import {
   SiReact,
   SiTypescript,
   SiPython,
   SiSass,
   SiNextdotjs,
-  SiCss3,
+  SiCss,
   SiHtml5,
   SiJavascript,
   SiDjango,
@@ -46,19 +44,19 @@ const Hero: React.FC = () => {
   const socialLinks: SocialLink[] = [
     {
       name: "GitHub",
-      icon: <Github size={20} />,
+      icon: <FiGithub size={20} />,
       url: "https://github.com/chchukwuebuka",
       color: "#333",
     },
     {
       name: "LinkedIn",
-      icon: <Linkedin size={20} />,
+      icon: <FiLinkedin size={20} />,
       url: "https://www.linkedin.com/in/chukwuebuka-egwuete",
       color: "#0077b5",
     },
     {
       name: "Twitter",
-      icon: <Twitter size={20} />,
+      icon: <FiTwitter size={20} />,
       url: "https://x.com/Ebuka__042?t=sqAmJKC0EnHPVSasVnmf3g&s=08",
       color: "#000000",
     },
@@ -88,7 +86,7 @@ const Hero: React.FC = () => {
       color: "#092e20",
     },
     { name: "Sass", icon: <SiSass size={48} />, color: "#cc6699" },
-    { name: "CSS", icon: <SiCss3 size={48} />, color: "#264de4" },
+    { name: "CSS", icon: <SiCss size={48} />, color: "#264de4" },
     { name: "HTML", icon: <SiHtml5 size={48} />, color: "#e34c26" },
     { name: "JavaScript", icon: <SiJavascript size={48} />, color: "#f7df1e" },
     {

@@ -53,10 +53,10 @@ const Navbar: React.FC = () => {
       href: "#education",
     },
     {
-      id: "resume",
-      label: "Resume",
+      id: "contact",
+      label: "Contact",
       icon: <FileText size={16} />,
-      href: "#resume",
+      href: "#contact",
     },
   ];
 
