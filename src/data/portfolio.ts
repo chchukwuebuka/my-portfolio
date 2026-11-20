@@ -106,7 +106,7 @@ export const portfolioData = {
     role: "Software Engineer · AI Automation",
     location: "Enugu, Nigeria",
     availability: "Open to opportunities and interesting engineering challenges.",
-    resumeUrl: "/pdf/CHUKWUEBUKA%20EGWUETE%20CV.pdf",
+    resumeUrl: "/pdf/Chukwuebuka_Emmanuel_Egwuete_CV.pdf",
     photo: "/images/IMG_1715.JPG",
     photos: [
       {
@@ -133,7 +133,7 @@ export const portfolioData = {
   hero: {
     headlineLines: ["I build software", "that solves", "real problems."],
     description:
-    "I build web applications, backend systems, and AI automation workflows — turning complex ideas into practical, reliable software.",
+      "I build web applications, backend systems, and AI automation workflows — turning complex ideas into practical, reliable software.",
     primaryCta: {
       label: "Explore selected work",
       href: "#work",
@@ -169,8 +169,87 @@ export const portfolioData = {
 
   projects: [
     {
-      slug: "kuepass",
+      slug: "hoist-it-solutions",
       index: "01",
+      title: "Hoist IT Solutions",
+      category: "Enterprise / Digital Transformation",
+      filterGroup: "systems",
+      tagline:
+        "Presenting enterprise software engineering and institutional digital transformation systems.",
+      summary:
+        "Corporate web platform for Hoist IT Solutions — a digital transformation partner designing institutional ERP platforms, custom business software, systems integration, and cloud infrastructure for universities, polytechnics, and enterprises.",
+      featured: true,
+      year: "Mar 2025 — Present",
+      role: "Software Engineer",
+      organization: "Hoist IT Solutions",
+      technologies: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Responsive Architecture",
+        "SEO",
+      ],
+      visualType: "screenshot",
+      image: "/images/Captureh.PNG",
+      imageAlt:
+        "Hoist IT Solutions corporate platform hero showcasing digital transformation systems for institutions and enterprises",
+      links: [
+        {
+          label: "Visit Hoist IT Solutions",
+          url: "https://hoistitsolutions.com/",
+          kind: "primary",
+        },
+      ],
+      highlights: [
+        "Clear positioning across institutional ERP platforms, custom software, cloud infrastructure, and IT consulting",
+        "Structured showcase of university and polytechnic transformation ecosystems (Godfrey Okoye University & Marist Polytechnic)",
+        "Performance-focused responsive architecture built for institutional decision-makers and enterprise stakeholders",
+      ],
+      caseStudy: {
+        problem:
+          "Enterprise technology partners serving universities and corporate organizations must communicate complex multi-module capabilities — ERP, portals, cybersecurity, cloud, and custom software — clearly without overwhelming non-technical decision-makers.",
+        objectives: [
+          "Present Hoist IT Solutions' institutional platforms and enterprise engineering services with clarity and authority.",
+          "Highlight real institutional transformation modules spanning admissions, student portals, staff systems, finance, CBT, and LMS.",
+          "Ensure fast page performance, clean information hierarchy, and dependable mobile responsiveness.",
+        ],
+        contributions: [
+          "Engineered the corporate web platform for Hoist IT Solutions from layout architecture to responsive implementation.",
+          "Structured service pages and institutional solution breakdowns to articulate unified database-backed ecosystems clearly.",
+          "Aligned visual hierarchy, navigation, and performance across desktop and mobile viewports.",
+        ],
+        technicalApproach:
+          "Built with component-driven frontend architecture emphasizing semantic markup, clean content structuring, and crisp responsive grids so institutional leaders can quickly evaluate capabilities and initiate engagements.",
+        architecture: [
+          {
+            layer: "Presentation & Narrative Layer",
+            detail:
+              "Modular landing and solutions sections articulating institutional ERP ecosystems and enterprise software services.",
+          },
+          {
+            layer: "Solution & Case Showcase",
+            detail:
+              "Structured breakdowns linking Hoist's modular architecture to real university and polytechnic deployments.",
+          },
+          {
+            layer: "Performance & SEO Foundation",
+            detail:
+              "Semantic HTML structure, responsive typography, and lightweight asset delivery for reliable browsing across devices.",
+          },
+        ],
+        challenges: [
+          {
+            challenge:
+              "Organizing a wide service catalog (education ERP, corporate custom software, cloud, cybersecurity, AI) into a cohesive user journey.",
+            solution:
+              "Grouped offerings around two primary tracks — Institutional Platforms and Business Solutions — backed by concise module descriptions and clear calls to action.",
+          },
+        ],
+      },
+    },
+    {
+      slug: "kuepass",
+      index: "02",
       title: "Kuepass",
       category: "Event Technology",
       filterGroup: "fullstack",
@@ -252,7 +331,7 @@ export const portfolioData = {
     },
     {
       slug: "university-systems",
-      index: "02",
+      index: "03",
       title: "University Systems",
       category: "Education Technology / Digital Infrastructure",
       filterGroup: "systems",
@@ -261,7 +340,7 @@ export const portfolioData = {
       summary:
         "Institutional software systems built for higher-education operations — connecting student admissions portals, authorized administrative dashboards, and digital library / learning platforms across Marist Polytechnic and Godfrey Okoye University.",
       featured: true,
-      year: "Present",
+      year: "2025 — Present",
       role: "Full-Stack / Frontend Software Engineer",
       organization: "Hoist IT Solutions & Godfrey Okoye University",
       technologies: [
@@ -302,7 +381,7 @@ export const portfolioData = {
           caption:
             "Academic library hub linking collections, Library Catalogue, online resources, institutional repository, and Student ERP access.",
           image: "/images/Capturel.PNG",
-          url: "https://onlinelearning.gouni.edu.ng/",
+          url: "https://library.gouni.edu.ng/",
         },
         {
           id: "gouni-student",
@@ -335,9 +414,14 @@ export const portfolioData = {
           kind: "portal",
         },
         {
-          label: "GOUNI Library & Online Learning",
-          url: "https://onlinelearning.gouni.edu.ng/",
+          label: "GOUNI Library",
+          url: "https://library.gouni.edu.ng/",
           kind: "primary",
+        },
+        {
+          label: "GOUNI Online Learning",
+          url: "https://onlinelearning.gouni.edu.ng/",
+          kind: "portal",
         },
         {
           label: "GOUNI Student Portal",
@@ -414,7 +498,7 @@ export const portfolioData = {
     },
     {
       slug: "cookeaze",
-      index: "03",
+      index: "04",
       title: "Cookeaze",
       category: "Food Technology / AI",
       filterGroup: "ai-web3",
@@ -484,7 +568,7 @@ export const portfolioData = {
     },
     {
       slug: "soundrig",
-      index: "04",
+      index: "05",
       title: "SoundRig",
       category: "Music Technology / Web3",
       filterGroup: "ai-web3",
@@ -554,85 +638,6 @@ export const portfolioData = {
               "Coordinating inconsistent latency and edge cases across multiple third-party Web3 wallets and external APIs.",
             solution:
               "Normalized wallet adapter states and implemented explicit pending, confirmed, and recoverable error states throughout the purchase and playback flows.",
-          },
-        ],
-      },
-    },
-    {
-      slug: "hoist-it-solutions",
-      index: "05",
-      title: "Hoist IT Solutions",
-      category: "Enterprise / Digital Transformation",
-      filterGroup: "systems",
-      tagline:
-        "Presenting enterprise software engineering and institutional digital transformation systems.",
-      summary:
-        "Corporate web platform for Hoist IT Solutions — a digital transformation partner designing institutional ERP platforms, custom business software, systems integration, and cloud infrastructure for universities, polytechnics, and enterprises.",
-      featured: true,
-      year: "Present",
-      role: "Software Engineer",
-      organization: "Hoist IT Solutions",
-      technologies: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Responsive Architecture",
-        "SEO",
-      ],
-      visualType: "screenshot",
-      image: "/images/Captureh.PNG",
-      imageAlt:
-        "Hoist IT Solutions corporate platform hero showcasing digital transformation systems for institutions and enterprises",
-      links: [
-        {
-          label: "Visit Hoist IT Solutions",
-          url: "https://hoistitsolutions.com/",
-          kind: "primary",
-        },
-      ],
-      highlights: [
-        "Clear positioning across institutional ERP platforms, custom software, cloud infrastructure, and IT consulting",
-        "Structured showcase of university and polytechnic transformation ecosystems (Godfrey Okoye University & Marist Polytechnic)",
-        "Performance-focused responsive architecture built for institutional decision-makers and enterprise stakeholders",
-      ],
-      caseStudy: {
-        problem:
-          "Enterprise technology partners serving universities and corporate organizations must communicate complex multi-module capabilities — ERP, portals, cybersecurity, cloud, and custom software — clearly without overwhelming non-technical decision-makers.",
-        objectives: [
-          "Present Hoist IT Solutions' institutional platforms and enterprise engineering services with clarity and authority.",
-          "Highlight real institutional transformation modules spanning admissions, student portals, staff systems, finance, CBT, and LMS.",
-          "Ensure fast page performance, clean information hierarchy, and dependable mobile responsiveness.",
-        ],
-        contributions: [
-          "Engineered the corporate web platform for Hoist IT Solutions from layout architecture to responsive implementation.",
-          "Structured service pages and institutional solution breakdowns to articulate unified database-backed ecosystems clearly.",
-          "Aligned visual hierarchy, navigation, and performance across desktop and mobile viewports.",
-        ],
-        technicalApproach:
-          "Built with component-driven frontend architecture emphasizing semantic markup, clean content structuring, and crisp responsive grids so institutional leaders can quickly evaluate capabilities and initiate engagements.",
-        architecture: [
-          {
-            layer: "Presentation & Narrative Layer",
-            detail:
-              "Modular landing and solutions sections articulating institutional ERP ecosystems and enterprise software services.",
-          },
-          {
-            layer: "Solution & Case Showcase",
-            detail:
-              "Structured breakdowns linking Hoist's modular architecture to real university and polytechnic deployments.",
-          },
-          {
-            layer: "Performance & SEO Foundation",
-            detail:
-              "Semantic HTML structure, responsive typography, and lightweight asset delivery for reliable browsing across devices.",
-          },
-        ],
-        challenges: [
-          {
-            challenge:
-              "Organizing a wide service catalog (education ERP, corporate custom software, cloud, cybersecurity, AI) into a cohesive user journey.",
-            solution:
-              "Grouped offerings around two primary tracks — Institutional Platforms and Business Solutions — backed by concise module descriptions and clear calls to action.",
           },
         ],
       },
@@ -781,7 +786,7 @@ export const portfolioData = {
       links: [
         {
           label: "Visit Live Site",
-          url: "https://winnerchikezie.com",
+          url: "http://www.winnerdzn.com/",
           kind: "primary",
         },
       ],
@@ -878,8 +883,7 @@ export const portfolioData = {
       id: "hoist-it-solutions",
       company: "Hoist IT Solutions",
       role: "Software Engineer — Institutional & Web Systems",
-      // Editable: add your exact start date (e.g. "2025 — Present") when ready
-      period: "Current",
+      period: "Mar 2025 — Present",
       location: "Nigeria · Remote",
       current: true,
       summary:
@@ -934,7 +938,11 @@ export const portfolioData = {
       ],
       shippedLinks: [
         {
-          label: "GOUNI Library & Online Learning",
+          label: "GOUNI Library",
+          url: "https://library.gouni.edu.ng/",
+        },
+        {
+          label: "GOUNI Online Learning",
           url: "https://onlinelearning.gouni.edu.ng/",
         },
         {
@@ -1083,7 +1091,7 @@ export const portfolioData = {
       index: "04",
       title: "AI Automation & Integrations",
       summary:
-      "Designing practical AI automation pipelines, intelligent workflows, and third-party integrations that eliminate manual operational bottlenecks.",
+        "Designing practical AI automation pipelines, intelligent workflows, and third-party integrations that eliminate manual operational bottlenecks.",
       items: [
         "AI Workflow Automation",
         "LLM & Contextual Assistant Integration",
@@ -1116,7 +1124,7 @@ export const portfolioData = {
       ],
     },
     approachNote:
-    "Whether shipping an AI-automated workflow, an event ticketing engine, or a university administrative portal, I focus on clarity of architecture, dependable behavior in edge cases, and interfaces people can trust.",
+      "Whether shipping an AI-automated workflow, an event ticketing engine, or a university administrative portal, I focus on clarity of architecture, dependable behavior in edge cases, and interfaces people can trust.",
     credentials: [
       {
         title: "B.Sc. Biochemistry",
