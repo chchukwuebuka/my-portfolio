@@ -82,6 +82,7 @@ export const About = () => {
           y: 18,
           opacity: 0,
           duration: 0.65,
+          stagger: 0.1,
           ease: "power3.out",
           scrollTrigger: {
             trigger: "[data-about-note]",
@@ -211,18 +212,34 @@ export const About = () => {
             <ScrollHighlightText
               paragraphs={about.paragraphs}
               keywords={[
+                "ai",
+                "automation",
+                "automated",
+                "intelligent",
+                "workflows",
                 "systems",
-                "scale",
                 "frontend",
                 "full-stack",
                 "interfaces",
                 "apis",
                 "databases",
                 "deployment",
-                "maintainable",
                 "purpose",
               ]}
             />
+
+            <div className={styles.aiBlock} data-about-note>
+              <span className={styles.aiEyebrow}>{about.aiFocus.eyebrow}</span>
+              <h3 className={styles.aiTitle}>{about.aiFocus.title}</h3>
+              <p className={styles.aiDesc}>{about.aiFocus.description}</p>
+              <ul className={styles.aiPoints}>
+                {about.aiFocus.points.map((point) => (
+                  <li key={point} className={styles.aiPoint}>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             <p className={styles.note} data-about-note>
               {about.approachNote}
@@ -248,18 +265,18 @@ export const About = () => {
                     </div>
                     <div className={styles.credentialRight}>
                       <span className={styles.credentialDate}>{cred.date}</span>
-                        {
-                          cred.certificateImage ? (
-                            <a
-                              href={cred.certificateImage}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className={styles.credentialLink}
-                            >
-                              <span>Certificate</span>
-                              <ArrowUpRight size={13} aria-hidden="true" />
-                            </a>
-                          ): cred.url ? (
+                      {
+                        cred.certificateImage ? (
+                          <a
+                            href={cred.certificateImage}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.credentialLink}
+                          >
+                            <span>Certificate</span>
+                            <ArrowUpRight size={13} aria-hidden="true" />
+                          </a>
+                        ) : cred.url ? (
                           <a
                             href={cred.url}
                             target="_blank"

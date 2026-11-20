@@ -58,15 +58,17 @@ export const Introduction = () => {
             <ScrollHighlightText
               paragraphs={introduction.paragraphs}
               keywords={[
+                "ai",
+                "automation",
+                "automated",
                 "products",
                 "systems",
                 "frontend",
                 "backend",
                 "api",
-                "integrations",
-                "automation",
+                "workflow",
                 "deployment",
-                "solution",
+                "full-stack",
               ]}
             />
           </div>

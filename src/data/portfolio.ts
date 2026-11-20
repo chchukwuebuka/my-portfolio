@@ -102,8 +102,8 @@ export const portfolioData = {
     fullName: "Chukwuebuka Emmanuel Egwuete",
     shortName: "Chukwuebuka Egwuete",
     monogram: "CE",
-    eyebrow: "SOFTWARE ENGINEER / FULL-STACK DEVELOPER",
-    role: "Software Engineer",
+    eyebrow: "SOFTWARE ENGINEER / FULL-STACK & AI AUTOMATION",
+    role: "Software Engineer · AI Automation",
     location: "Enugu, Nigeria",
     availability: "Open to opportunities and interesting engineering challenges.",
     resumeUrl: "/pdf/CHUKWUEBUKA%20EGWUETE%20CV.pdf",
@@ -133,7 +133,7 @@ export const portfolioData = {
   hero: {
     headlineLines: ["I build software", "that solves", "real problems."],
     description:
-      "I build web applications, backend systems, and digital products — turning complex ideas into practical, reliable software.",
+    "I build web applications, backend systems, and AI automation workflows — turning complex ideas into practical, reliable software.",
     primaryCta: {
       label: "Explore selected work",
       href: "#work",
@@ -146,23 +146,23 @@ export const portfolioData = {
 
   introduction: {
     eyebrow: "POSITIONING",
-    heading: "Engineering ideas into useful products.",
+    heading: "Engineering software & AI automation.",
     paragraphs: [
-      "I am a software developer focused on building useful digital products and reliable systems. My work spans frontend development, backend engineering, API design, integrations, automation, and deployment.",
-      "I enjoy working through the entire process — understanding a problem, designing a solution, building it, and making sure it works in the real world.",
+      "I am a software engineer focused on building useful digital products, reliable systems, and practical AI automation. My work spans frontend development, backend engineering, API design, AI workflow integration, and deployment.",
+      "I enjoy working through the entire process — understanding a problem, designing an automated or full-stack solution, building it, and making sure it performs reliably in the real world.",
     ],
     pillars: [
       {
-        label: "Scope",
-        value: "End-to-end delivery from UI architecture to production APIs",
+        label: "AI Automation",
+        value: "AI-driven workflows, contextual assistants & operational automation in Python",
       },
       {
-        label: "Systems",
-        value: "Event ticketing, university portals, AI workflows & Web3 interfaces",
+        label: "Full-Stack Systems",
+        value: "End-to-end delivery across event platforms, university portals & Web3 apps",
       },
       {
-        label: "Practice",
-        value: "Maintainable TypeScript, Python/Django services & practical UX",
+        label: "Engineering Practice",
+        value: "Maintainable TypeScript, React/Next.js, Django REST APIs & clean UX",
       },
     ],
   },
@@ -582,7 +582,7 @@ export const portfolioData = {
       visualType: "screenshot",
       image: "/images/Captureh.PNG",
       imageAlt:
-      "Hoist IT Solutions corporate platform hero showcasing digital transformation systems for institutions and enterprises",
+        "Hoist IT Solutions corporate platform hero showcasing digital transformation systems for institutions and enterprises",
       links: [
         {
           label: "Visit Hoist IT Solutions",
@@ -1081,30 +1081,42 @@ export const portfolioData = {
     },
     {
       index: "04",
-      title: "Integrations & Product Engineering",
+      title: "AI Automation & Integrations",
       summary:
-        "Connecting applications to external services, institutional ecosystems, payment flows, and practical AI automation.",
+      "Designing practical AI automation pipelines, intelligent workflows, and third-party integrations that eliminate manual operational bottlenecks.",
       items: [
+        "AI Workflow Automation",
+        "LLM & Contextual Assistant Integration",
+        "Python Automation Pipelines",
+        "Process & Operational Automation",
         "Payment Gateway Integrations",
         "Third-Party & External APIs",
-        "AI Workflow Integration",
-        "Institutional Portal & LMS Systems",
-        "Web3 Wallet & Contract Integration",
-        "End-to-End System Design",
+        "Institutional Portal & Web3 Systems",
       ],
     },
   ] as CapabilityGroup[],
 
   about: {
-    eyebrow: "ABOUT",
-    heading: "Systems thinking, practical execution.",
+    eyebrow: "ABOUT & AI AUTOMATION",
+    heading: "Systems thinking & AI automation.",
     paragraphs: [
-      "I'm interested in more than making interfaces look good. I enjoy understanding how systems work, how data moves, how applications scale, and how software can simplify real problems.",
-      "My development journey has evolved from frontend engineering into full-stack development, giving me the opportunity to work across user interfaces, APIs, databases, integrations, and deployment.",
-      "I value practical engineering, continuous learning, maintainable code, and building products that serve a genuine purpose.",
+      "I'm interested in more than making interfaces look good. I enjoy understanding how systems work, how data moves, how AI automation eliminates repetitive manual work, and how software simplifies real operational problems.",
+      "My development journey has evolved from frontend engineering into full-stack development and AI automation — giving me the opportunity to work across user interfaces, APIs, databases, intelligent workflows, integrations, and deployment.",
+      "I value practical engineering, continuous learning, maintainable code, and building software and automated systems that serve a genuine purpose.",
     ],
+    aiFocus: {
+      eyebrow: "CORE SPECIALTY / AI AUTOMATION",
+      title: "Practical AI automation built into production software.",
+      description:
+        "Beyond building web applications, I engineer AI-driven automation that powers real product workflows — from Python-backed culinary intelligence and personalized meal planning in Cookeaze to automated event operations in Kuepass and workflow integrations across business systems.",
+      points: [
+        "Python-based AI automation pipelines & structured output orchestration",
+        "Contextual AI assistants integrated directly into web & mobile interfaces",
+        "Automated operational workflows reducing repetitive manual tasks",
+      ],
+    },
     approachNote:
-      "Whether shipping an event ticketing workflow, a university administrative portal, or an AI-assisted consumer product, I focus on clarity of architecture, dependable behavior in edge cases, and interfaces people can trust.",
+    "Whether shipping an AI-automated workflow, an event ticketing engine, or a university administrative portal, I focus on clarity of architecture, dependable behavior in edge cases, and interfaces people can trust.",
     credentials: [
       {
         title: "B.Sc. Biochemistry",

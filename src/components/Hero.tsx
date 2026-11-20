@@ -158,7 +158,7 @@ export const Hero = () => {
 
         <div className={styles.bottomBar} data-hero-bottom>
           <span className={styles.bottomIdentity}>{profile.fullName}</span>
-          <span>FULL-STACK · BACKEND SYSTEMS · DIGITAL PRODUCTS</span>
+          <span>FULL-STACK · BACKEND SYSTEMS · AI AUTOMATION</span>
         </div>
       </div>
     </section>
