@@ -1,39 +1,61 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import ScrollManager from "./components/ScrollManager";
+import SmoothScroll from "./components/SmoothScroll";
+import HomePage from "./pages/HomePage";
 
-const CharacterModel = lazy(() => import("./components/Character"));
-const MainContainer = lazy(() => import("./components/MainContainer"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const MyWorks = lazy(() => import("./pages/MyWorks"));
-import { LoadingProvider } from "./context/LoadingProvider";
+
+const RouteFallback = () => (
+  <div
+    style={{
+      minHeight: "60vh",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      color: "var(--text-subtle)",
+      fontSize: "0.875rem",
+      letterSpacing: "0.08em",
+      textTransform: "uppercase",
+    }}
+  >
+    Loading…
+  </div>
+);
 
 const App = () => {
   return (
     <BrowserRouter>
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
+      <SmoothScroll />
+      <ScrollManager />
+      <Navbar />
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route
-          path="/"
+          path="/work/:slug"
           element={
-            <LoadingProvider>
-              <Suspense>
-                <MainContainer>
-                  <Suspense>
-                    <CharacterModel />
-                  </Suspense>
-                </MainContainer>
-              </Suspense>
-            </LoadingProvider>
+            <Suspense fallback={<RouteFallback />}>
+              <ProjectDetail />
+            </Suspense>
           }
         />
         <Route
           path="/myworks"
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<RouteFallback />}>
               <MyWorks />
             </Suspense>
           }
         />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };

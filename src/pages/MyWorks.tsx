@@ -1,45 +1,144 @@
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { config } from "../config";
-import "./MyWorks.css";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { portfolioData, type Project } from "../data/portfolio";
+import { gsap, REDUCED_MOTION_QUERY } from "../utils/gsap";
+import BlockReveal from "../components/BlockReveal";
+import styles from "./MyWorks.module.css";
+
+type FilterValue = "all" | Project["filterGroup"];
+
+const FILTERS: { value: FilterValue; label: string }[] = [
+  { value: "all", label: "All Projects" },
+  { value: "systems", label: "Education & Enterprise Systems" },
+  { value: "fullstack", label: "Full Stack" },
+  { value: "ai-web3", label: "AI & Web3" },
+  { value: "frontend", label: "Frontend" },
+];
 
 const MyWorks = () => {
-  return (
-    <div className="myworks-page">
-      <div className="myworks-header">
-        <Link to="/" className="back-button" data-cursor="disable">
-          ← Back to Home
-        </Link>
-        <h1>
-          All <span>Works</span>
-        </h1>
-        <p>A collection of all my projects and creations</p>
-      </div>
+  const [activeFilter, setActiveFilter] = useState<FilterValue>("all");
+  const pageRef = useRef<HTMLElement | null>(null);
 
-      <div className="myworks-grid">
-        {config.projects.map((project, index) => (
-          <a
-            href={project.link || "#"}
-            target="_blank"
-            rel="noreferrer"
-            className="myworks-card"
-            key={project.id}
-            data-cursor="disable"
-            style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column' }}
-          >
-            <div className="myworks-card-number">0{index + 1}</div>
-            <div className="myworks-card-image">
-              <img src={project.image} alt={project.title} />
-            </div>
-            <div className="myworks-card-info">
-              <h3>{project.title}</h3>
-              <p className="myworks-card-category">{project.category}</p>
-              <p className="myworks-card-description">{project.description}</p>
-              <p className="myworks-card-tech">{project.technologies}</p>
-            </div>
-          </a>
-        ))}
+  useEffect(() => {
+    document.title = `Project Archive — ${portfolioData.profile.fullName}`;
+  }, []);
+
+  const filteredProjects =
+    activeFilter === "all"
+      ? portfolioData.projects
+      : portfolioData.projects.filter((p) => p.filterGroup === activeFilter);
+
+  useLayoutEffect(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add(REDUCED_MOTION_QUERY, () => {
+      const ctx = gsap.context(() => {
+        gsap.from("[data-archive-row]", {
+          y: 18,
+          opacity: 0,
+          duration: 0.45,
+          stagger: 0.05,
+          ease: "power3.out",
+          clearProps: "transform,opacity",
+        });
+      }, pageRef);
+
+      return () => ctx.revert();
+    });
+
+    return () => mm.revert();
+  }, [activeFilter]);
+
+  return (
+    <main ref={pageRef} id="main-content" className={styles.page}>
+      <div className="container">
+        <Link to="/" className={styles.backLink}>
+          <ArrowLeft size={16} aria-hidden="true" />
+          <span>Back to Home</span>
+        </Link>
+
+        <header className={styles.header}>
+          <div className={styles.headerLeft}>
+            <span className="eyebrow">
+              <span className="eyebrow-index">ARCHIVE</span>
+              <span>/ ALL SHIPPED WORK</span>
+            </span>
+            <BlockReveal animateOnScroll={false} blockColor="#B89A6A" duration={0.45}>
+              <h1 className={styles.title}>Complete Project Index</h1>
+            </BlockReveal>
+          </div>
+          <p className={styles.lead}>
+            Production platforms, university portals, AI workflows, Web3
+            applications, and client builds engineered across my career.
+          </p>
+        </header>
+
+        <div
+          className={styles.filters}
+          role="tablist"
+          aria-label="Filter projects by category"
+        >
+          {FILTERS.map((filter) => (
+            <button
+              key={filter.value}
+              type="button"
+              role="tab"
+              aria-selected={activeFilter === filter.value}
+              onClick={() => setActiveFilter(filter.value)}
+              className={`${styles.filterBtn} ${
+                activeFilter === filter.value ? styles.filterBtnActive : ""
+              }`}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+
+        <ol className={styles.list}>
+          {filteredProjects.map((project) => (
+            <li key={project.slug} className={styles.row} data-archive-row>
+              <span className={styles.rowIndex}>{project.index}</span>
+
+              <div className={styles.rowIdentity}>
+                <Link to={`/work/${project.slug}`} className={styles.rowTitle}>
+                  {project.title}
+                </Link>
+                <span className={styles.rowMeta}>
+                  {project.category} · {project.year}
+                </span>
+              </div>
+
+              <div className={styles.rowBody}>
+                <p className={styles.rowDesc}>{project.summary}</p>
+                <p className={styles.rowTech}>
+                  {project.technologies.join(" / ")}
+                </p>
+              </div>
+
+              <div className={styles.rowActions}>
+                <Link to={`/work/${project.slug}`} className={styles.caseBtn}>
+                  <span>Case study</span>
+                  <ArrowUpRight size={14} aria-hidden="true" />
+                </Link>
+                {project.links.map((link) => (
+                  <a
+                    key={link.url}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.extLink}
+                  >
+                    <span>{link.label}</span>
+                    <ArrowUpRight size={13} aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
+            </li>
+          ))}
+        </ol>
       </div>
-    </div>
+    </main>
   );
 };
 

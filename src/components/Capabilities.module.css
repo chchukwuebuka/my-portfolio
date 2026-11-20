@@ -1,0 +1,126 @@
+.section {
+  background-color: var(--bg-primary);
+  padding-block: var(--section-py);
+  border-top: 1px solid var(--border);
+}
+
+.header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: clamp(3rem, 5.5vw, 4.75rem);
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.heading {
+  font-size: var(--text-section);
+  line-height: 1.06;
+  letter-spacing: -0.028em;
+}
+
+.lead {
+  font-size: var(--text-body);
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.matrix {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+
+.cell {
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background-color: var(--bg-primary);
+  transition: background-color var(--duration-base) var(--ease-out);
+}
+
+.cell:hover {
+  background-color: var(--bg-plate);
+}
+
+.cellHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cellTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.cellIndex {
+  font-size: var(--text-label);
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.cellSummary {
+  font-size: 0.9375rem;
+  line-height: 1.62;
+  color: var(--text-secondary);
+  max-width: 48ch;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.625rem 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.listItem {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.listItem::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  transform: translateY(-2px);
+  flex-shrink: 0;
+}
+
+@media (max-width: 960px) {
+  .header {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .matrix {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 540px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+}

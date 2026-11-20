@@ -1,0 +1,52 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.paragraph {
+  font-size: var(--text-body-lg);
+  line-height: 1.78;
+  color: var(--text-secondary);
+  max-width: 60ch;
+}
+
+.lead {
+  color: var(--text-primary);
+}
+
+.word {
+  display: inline-block;
+  position: relative;
+  margin-right: 0.28em;
+  margin-bottom: 0.14em;
+  padding: 0.04em 0.18em;
+  border-radius: var(--radius-xs);
+  will-change: background-color, opacity;
+}
+
+.wordText {
+  position: relative;
+  display: inline-block;
+  will-change: opacity;
+}
+
+.keywordWrap {
+  margin-right: 0.36em;
+  padding-inline: 0.34em;
+}
+
+.keyword {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.keyword::before {
+  content: "";
+  position: absolute;
+  inset: -0.02em -0.26em;
+  border-radius: var(--radius-xs);
+  background-color: var(--accent-soft);
+  border: 1px solid var(--accent-border);
+  z-index: -1;
+}

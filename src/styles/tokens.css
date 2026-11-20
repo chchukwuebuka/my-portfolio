@@ -1,0 +1,50 @@
+:root {
+  /* Color Palette */
+  --bg-primary: #000000;
+  --bg-secondary: #0b0b0b;
+  --bg-elevated: #141414;
+  --bg-plate: #080808;
+
+  --text-primary: #f4f2ee;
+  --text-secondary: #a1a1a1;
+  --text-subtle: #707070;
+
+  --border: #222222;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-strong: #363636;
+
+  --accent: #b89a6a;
+  --accent-soft: rgba(184, 154, 106, 0.12);
+  --accent-border: rgba(184, 154, 106, 0.35);
+
+  /* Typography */
+  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Space Grotesk", "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Fluid Typographic Scale */
+  --text-hero: clamp(2.25rem, 6.2vw, 6rem);
+  --text-section: clamp(1.875rem, 4vw, 3.625rem);
+  --text-project: clamp(1.5rem, 2.8vw, 2.625rem);
+  --text-subhead: clamp(1.125rem, 1.5vw, 1.375rem);
+  --text-body-lg: clamp(1.0625rem, 1.15vw, 1.1875rem);
+  --text-body: 1rem;
+  --text-sm: 0.875rem;
+  --text-label: 0.75rem;
+
+  /* Layout & Spacing */
+  --container-max: 1344px;
+  --gutter: clamp(1.25rem, 5vw, 5rem);
+  --nav-height: 72px;
+  --section-py: clamp(4.75rem, 9.5vw, 8.75rem);
+
+  /* Radii — disciplined and sharp */
+  --radius-xs: 3px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 200ms;
+  --duration-base: 340ms;
+  --duration-slow: 560ms;
+}

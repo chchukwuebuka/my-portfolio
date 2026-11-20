@@ -1,129 +1,181 @@
-import { MdArrowOutward, MdCopyright } from "react-icons/md";
-import "./styles/Contact.css";
-import { config } from "../config";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
+import { ArrowUpRight, Check, Copy } from "lucide-react";
+import { portfolioData } from "../data/portfolio";
+import { gsap, REDUCED_MOTION_QUERY } from "../utils/gsap";
+import BlockReveal from "./BlockReveal";
+import styles from "./Contact.module.css";
 
-gsap.registerPlugin(ScrollTrigger);
+export const Contact = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [copied, setCopied] = useState(false);
+  const { contact, profile } = portfolioData;
 
-const Contact = () => {
-  useEffect(() => {
-    const contactTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".contact-section",
-        start: "top 80%",
-        end: "bottom center",
-        toggleActions: "play none none none",
-      },
+  useLayoutEffect(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add(REDUCED_MOTION_QUERY, () => {
+      const ctx = gsap.context(() => {
+        gsap.from("[data-contact-left]", {
+          y: 26,
+          opacity: 0,
+          duration: 0.72,
+          stagger: 0.09,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 82%",
+            once: true,
+          },
+        });
+
+        gsap.from("[data-contact-channel]", {
+          y: 18,
+          opacity: 0,
+          duration: 0.55,
+          stagger: 0.07,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: "[data-contact-channels]",
+            start: "top 85%",
+            once: true,
+          },
+        });
+      }, sectionRef);
+
+      return () => ctx.revert();
     });
 
-    // Animate title from bottom
-    contactTimeline.fromTo(
-      ".contact-section h3",
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      }
-    );
-
-    // Animate contact boxes with stagger from bottom
-    contactTimeline.fromTo(
-      ".contact-box",
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.15,
-        ease: "power3.out",
-      },
-      "-=0.4"
-    );
-
-    // Clean up
-    return () => {
-      contactTimeline.kill();
-    };
+    return () => mm.revert();
   }, []);
 
-  return (
-    <div className="contact-section section-container" id="contact">
-      <div className="contact-container">
-        <h3>{config.developer.fullName}</h3>
-        <div className="contact-flex">
-          <div className="contact-box">
-            <h4>Email</h4>
-            <p>
-              <a href={`mailto:${config.contact.email}`} data-cursor="disable">
-                {config.contact.email}
-              </a>
-            </p>
-            <h4>Location</h4>
-            <p>
-              <span>{config.social.location}</span>
-            </p>
-          </div>
-          <div className="contact-box">
-            <h4>Social</h4>
-            <a
-              href={config.contact.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Github <MdArrowOutward />
-            </a>
-            <a
-              href={config.contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Linkedin <MdArrowOutward />
-            </a>
-            <a
-              href={config.contact.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Twitter <MdArrowOutward />
-            </a>
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(contact.email);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2400);
+    } catch {
+      const input = document.createElement("input");
+      input.value = contact.email;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand("copy");
+      document.body.removeChild(input);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2400);
+    }
+  };
 
-            <a
-              href={config.contact.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Instagram <MdArrowOutward />
-            </a>
+  const channels = [
+    {
+      label: "LinkedIn",
+      value: "linkedin.com/in/chukwuebuka-egwuete",
+      href: contact.linkedin,
+      external: true,
+    },
+    {
+      label: "GitHub",
+      value: "github.com/chchukwuebuka",
+      href: contact.github,
+      external: true,
+    },
+    {
+      label: "X / Twitter",
+      value: "@Ebuka__042",
+      href: contact.twitter,
+      external: true,
+    },
+    {
+      label: "Phone",
+      value: contact.phone,
+      href: contact.phoneHref,
+      external: false,
+    },
+    {
+      label: "Résumé",
+      value: "Download CV (PDF)",
+      href: profile.resumeUrl,
+      external: true,
+    },
+  ];
+
+  return (
+    <section
+      id="contact"
+      ref={sectionRef}
+      className={styles.section}
+      aria-labelledby="contact-heading"
+    >
+      <div className="container">
+        <div className={styles.layout}>
+          <div className={styles.left}>
+            <span className="eyebrow" data-contact-left>
+              <span className="eyebrow-index">06</span>
+              <span>/ {contact.eyebrow}</span>
+            </span>
+
+            <BlockReveal blockColor="#B89A6A">
+              <h2 id="contact-heading" className={styles.heading}>
+                {contact.heading}
+              </h2>
+            </BlockReveal>
+
+            <p className={styles.description} data-contact-left>
+              {contact.description}
+            </p>
+
+            <div className={styles.emailRow} data-contact-left>
+              <a href={`mailto:${contact.email}`} className={styles.emailLink}>
+                <span>{contact.email}</span>
+                <ArrowUpRight size={20} aria-hidden="true" />
+              </a>
+
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                className={`${styles.copyBtn} ${
+                  copied ? styles.copyBtnCopied : ""
+                }`}
+                aria-label="Copy email address to clipboard"
+              >
+                {copied ? (
+                  <>
+                    <Check size={14} aria-hidden="true" />
+                    <span>Copied</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy size={14} aria-hidden="true" />
+                    <span>Copy email</span>
+                  </>
+                )}
+              </button>
+              <span className="sr-only" aria-live="polite">
+                {copied ? "Email address copied to clipboard." : ""}
+              </span>
+            </div>
           </div>
-          <div className="contact-box">
-            <h2>
-              Designed and Developed <br /> by <span>{config.developer.fullName}</span>
-            </h2>
-            <h5>
-              <MdCopyright /> {new Date().getFullYear()}
-            </h5>
+
+          <div className={styles.right} data-contact-channels>
+            {channels.map((channel) => (
+              <a
+                key={channel.label}
+                href={channel.href}
+                target={channel.external ? "_blank" : undefined}
+                rel={channel.external ? "noopener noreferrer" : undefined}
+                className={styles.channelRow}
+                data-contact-channel
+              >
+                <span className={styles.channelLabel}>{channel.label}</span>
+                <span className={styles.channelValue}>
+                  <span>{channel.value}</span>
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
