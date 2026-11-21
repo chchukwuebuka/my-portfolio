@@ -2,6 +2,12 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { portfolioData } from "../data/portfolio";
+import {
+  trackContactClick,
+  trackFileDownload,
+  trackGitHubClick,
+  trackLinkedInClick,
+} from "../utils/analytics";
 import { gsap, REDUCED_MOTION_QUERY } from "../utils/gsap";
 import { smoothScrollTo } from "../utils/lenis";
 import Monogram from "./Monogram";
@@ -200,6 +206,9 @@ export const Navbar = () => {
               className={styles.iconLink}
               aria-label="GitHub profile"
               title="GitHub"
+              onClick={() =>
+                trackGitHubClick("navbar", portfolioData.contact.github)
+              }
             >
               <GitHubIcon />
             </a>
@@ -210,6 +219,9 @@ export const Navbar = () => {
               className={styles.iconLink}
               aria-label="LinkedIn profile"
               title="LinkedIn"
+              onClick={() =>
+                trackLinkedInClick("navbar", portfolioData.contact.linkedin)
+              }
             >
               <LinkedInIcon />
             </a>
@@ -260,6 +272,7 @@ export const Navbar = () => {
             href={`mailto:${portfolioData.contact.email}`}
             className={styles.mobileEmail}
             tabIndex={menuOpen ? 0 : -1}
+            onClick={() => trackContactClick("email", "mobile_menu")}
           >
             {portfolioData.contact.email}
           </a>
@@ -270,6 +283,9 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               className={styles.mobileSocialLink}
               tabIndex={menuOpen ? 0 : -1}
+              onClick={() =>
+                trackGitHubClick("mobile_menu", portfolioData.contact.github)
+              }
             >
               GitHub <ArrowUpRight size={14} />
             </a>
@@ -279,6 +295,9 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               className={styles.mobileSocialLink}
               tabIndex={menuOpen ? 0 : -1}
+              onClick={() =>
+                trackLinkedInClick("mobile_menu", portfolioData.contact.linkedin)
+              }
             >
               LinkedIn <ArrowUpRight size={14} />
             </a>
@@ -288,6 +307,12 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               className={styles.mobileSocialLink}
               tabIndex={menuOpen ? 0 : -1}
+              onClick={() =>
+                trackFileDownload(
+                  "Chukwuebuka_Emmanuel_Egwuete_CV.pdf",
+                  "mobile_menu"
+                )
+              }
             >
               Résumé <ArrowUpRight size={14} />
             </a>

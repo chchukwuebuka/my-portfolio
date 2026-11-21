@@ -1,6 +1,12 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { ArrowUpRight, Check, Copy } from "lucide-react";
 import { portfolioData } from "../data/portfolio";
+import {
+  trackContactClick,
+  trackFileDownload,
+  trackGitHubClick,
+  trackLinkedInClick,
+} from "../utils/analytics";
 import { gsap, REDUCED_MOTION_QUERY } from "../utils/gsap";
 import BlockReveal from "./BlockReveal";
 import styles from "./Contact.module.css";
@@ -49,6 +55,7 @@ export const Contact = () => {
   }, []);
 
   const handleCopyEmail = async () => {
+    trackContactClick("email_copy", "contact_section");
     try {
       await navigator.clipboard.writeText(contact.email);
       setCopied(true);
@@ -124,7 +131,11 @@ export const Contact = () => {
             </p>
 
             <div className={styles.emailRow} data-contact-left>
-              <a href={`mailto:${contact.email}`} className={styles.emailLink}>
+              <a
+                href={`mailto:${contact.email}`}
+                className={styles.emailLink}
+                onClick={() => trackContactClick("email", "contact_section")}
+              >
                 <span>{contact.email}</span>
                 <ArrowUpRight size={20} aria-hidden="true" />
               </a>
@@ -164,6 +175,22 @@ export const Contact = () => {
                 rel={channel.external ? "noopener noreferrer" : undefined}
                 className={styles.channelRow}
                 data-contact-channel
+                onClick={() => {
+                  if (channel.label === "LinkedIn") {
+                    trackLinkedInClick("contact_section", channel.href);
+                  } else if (channel.label === "GitHub") {
+                    trackGitHubClick("contact_section", channel.href);
+                  } else if (channel.label === "X / Twitter") {
+                    trackContactClick("twitter", "contact_section");
+                  } else if (channel.label === "Phone") {
+                    trackContactClick("phone", "contact_section");
+                  } else if (channel.label === "Résumé") {
+                    trackFileDownload(
+                      "Chukwuebuka_Emmanuel_Egwuete_CV.pdf",
+                      "contact_section"
+                    );
+                  }
+                }}
               >
                 <span className={styles.channelLabel}>{channel.label}</span>
                 <span className={styles.channelValue}>

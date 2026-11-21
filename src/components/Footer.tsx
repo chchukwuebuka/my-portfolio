@@ -1,4 +1,9 @@
 import { portfolioData } from "../data/portfolio";
+import {
+  trackContactClick,
+  trackGitHubClick,
+  trackLinkedInClick,
+} from "../utils/analytics";
 import Monogram from "./Monogram";
 import styles from "./Footer.module.css";
 
@@ -26,6 +31,9 @@ export const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}
+            onClick={() =>
+              trackGitHubClick("footer", portfolioData.contact.github)
+            }
           >
             GitHub
           </a>
@@ -34,10 +42,17 @@ export const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}
+            onClick={() =>
+              trackLinkedInClick("footer", portfolioData.contact.linkedin)
+            }
           >
             LinkedIn
           </a>
-          <a href={`mailto:${portfolioData.contact.email}`} className={styles.link}>
+          <a
+            href={`mailto:${portfolioData.contact.email}`}
+            className={styles.link}
+            onClick={() => trackContactClick("email", "footer")}
+          >
             Email
           </a>
           <span className={styles.divider} aria-hidden="true" />

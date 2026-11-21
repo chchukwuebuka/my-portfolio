@@ -1,0 +1,38 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[dev]
+  command = "npm run dev"
+  targetPort = 5173
+  port = 8888
+  autoLaunch = false
+
+# Block search engine indexing and browser/CDN caching on private admin pages
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive, nosnippet"
+    Cache-Control = "no-store, no-cache, must-revalidate, private"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+
+# Harden all Netlify serverless endpoints
+[[headers]]
+  for = "/.netlify/functions/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store, private"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+
+# SPA client-side routing fallback (Netlify serves static files & /.netlify/functions/* first)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

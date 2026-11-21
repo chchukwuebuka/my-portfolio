@@ -2,6 +2,10 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { getProjectBySlug, portfolioData } from "../data/portfolio";
+import {
+  trackExternalProjectClick,
+  trackProjectView,
+} from "../utils/analytics";
 import { gsap, REDUCED_MOTION_QUERY } from "../utils/gsap";
 import BlockReveal from "../components/BlockReveal";
 import { HoistPlatformPlate, UniversitySystemsPlate } from "../components/SystemDiagram";
@@ -15,6 +19,7 @@ export const ProjectDetail = () => {
   useEffect(() => {
     if (project) {
       document.title = `${project.title} — ${portfolioData.profile.fullName}`;
+      trackProjectView(project.title, project.category, project.slug);
     } else {
       document.title = `Project Not Found — ${portfolioData.profile.fullName}`;
     }
@@ -152,6 +157,14 @@ export const ProjectDetail = () => {
                   idx === 0 && link.kind === "primary"
                     ? styles.primaryLinkBtn
                     : styles.portalLinkBtn
+                }
+                onClick={() =>
+                  trackExternalProjectClick(
+                    project.title,
+                    project.category,
+                    link.url,
+                    "case_study_header"
+                  )
                 }
               >
                 <span>{link.label}</span>

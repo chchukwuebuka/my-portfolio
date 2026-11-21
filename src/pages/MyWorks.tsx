@@ -2,6 +2,10 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { portfolioData, type Project } from "../data/portfolio";
+import {
+  trackExternalProjectClick,
+  trackProjectClick,
+} from "../utils/analytics";
 import { gsap, REDUCED_MOTION_QUERY } from "../utils/gsap";
 import BlockReveal from "../components/BlockReveal";
 import styles from "./MyWorks.module.css";
@@ -117,7 +121,17 @@ const MyWorks = () => {
               </div>
 
               <div className={styles.rowActions}>
-                <Link to={`/work/${project.slug}`} className={styles.caseBtn}>
+                <Link
+                  to={`/work/${project.slug}`}
+                  className={styles.caseBtn}
+                  onClick={() =>
+                    trackProjectClick(
+                      project.title,
+                      project.category,
+                      "archive_page"
+                    )
+                  }
+                >
                   <span>Case study</span>
                   <ArrowUpRight size={14} aria-hidden="true" />
                 </Link>
@@ -128,6 +142,14 @@ const MyWorks = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.extLink}
+                    onClick={() =>
+                      trackExternalProjectClick(
+                        project.title,
+                        project.category,
+                        link.url,
+                        "archive_page"
+                      )
+                    }
                   >
                     <span>{link.label}</span>
                     <ArrowUpRight size={13} aria-hidden="true" />

@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import AnalyticsTracker from "./components/AnalyticsTracker";
@@ -9,6 +9,12 @@ import HomePage from "./pages/HomePage";
 
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const MyWorks = lazy(() => import("./pages/MyWorks"));
+const AdminLoginPage = lazy(
+  () => import("./admin/components/AdminLoginPage")
+);
+const AdminDashboardPage = lazy(
+  () => import("./admin/components/AdminDashboardPage")
+);
 
 const RouteFallback = () => (
   <div
@@ -27,37 +33,72 @@ const RouteFallback = () => (
   </div>
 );
 
+const PublicLayout = () => (
+  <>
+    <a href="#main-content" className="skip-link">
+      Skip to content
+    </a>
+    <AnalyticsTracker />
+    <SmoothScroll />
+    <ScrollManager />
+    <Navbar />
+    <Outlet />
+    <Footer />
+  </>
+);
+
 const App = () => {
   return (
     <BrowserRouter>
-      <a href="#main-content" className="skip-link">
-        Skip to content
-      </a>
-      <AnalyticsTracker />
-      <SmoothScroll />
-      <ScrollManager />
-      <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        {/* Private Analytics Dashboard — isolated from public shell and excluded from GA4 */}
         <Route
-          path="/work/:slug"
+          path="/admin/analytics/login"
           element={
             <Suspense fallback={<RouteFallback />}>
-              <ProjectDetail />
+              <AdminLoginPage />
             </Suspense>
           }
         />
         <Route
-          path="/myworks"
+          path="/admin/analytics"
           element={
             <Suspense fallback={<RouteFallback />}>
-              <MyWorks />
+              <AdminDashboardPage />
             </Suspense>
           }
         />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route
+          path="/admin/analytics/:section"
+          element={
+            <Suspense fallback={<RouteFallback />}>
+              <AdminDashboardPage />
+            </Suspense>
+          }
+        />
+
+        {/* Public Portfolio */}
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/work/:slug"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <ProjectDetail />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/myworks"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <MyWorks />
+              </Suspense>
+            }
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 };

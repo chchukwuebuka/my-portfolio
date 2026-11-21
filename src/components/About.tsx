@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight, FileText } from "lucide-react";
 import { portfolioData } from "../data/portfolio";
+import { trackFileDownload } from "../utils/analytics";
 import { gsap, REDUCED_MOTION_QUERY } from "../utils/gsap";
 import BlockReveal from "./BlockReveal";
 import ScrollHighlightText from "./ScrollHighlightText";
@@ -201,6 +202,12 @@ export const About = () => {
               rel="noopener noreferrer"
               className={styles.resumeLink}
               data-about-left
+              onClick={() =>
+                trackFileDownload(
+                  "Chukwuebuka_Emmanuel_Egwuete_CV.pdf",
+                  "about_section"
+                )
+              }
             >
               <FileText size={16} aria-hidden="true" />
               <span>View Résumé (PDF)</span>

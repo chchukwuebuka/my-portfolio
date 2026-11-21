@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { portfolioData } from "../data/portfolio";
+import { trackExternalProjectClick } from "../utils/analytics";
 import { gsap, REDUCED_MOTION_QUERY } from "../utils/gsap";
 import BlockReveal from "./BlockReveal";
 import styles from "./Experience.module.css";
@@ -116,6 +117,14 @@ export const Experience = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.shippedLink}
+                        onClick={() =>
+                          trackExternalProjectClick(
+                            link.label,
+                            exp.company,
+                            link.url,
+                            "experience_section"
+                          )
+                        }
                       >
                         <span>{link.label}</span>
                         <ArrowUpRight size={13} aria-hidden="true" />

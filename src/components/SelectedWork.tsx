@@ -2,6 +2,10 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { featuredProjects, portfolioData, type Project } from "../data/portfolio";
+import {
+  trackExternalProjectClick,
+  trackProjectClick,
+} from "../utils/analytics";
 import { gsap, REDUCED_MOTION_QUERY } from "../utils/gsap";
 import BlockReveal from "./BlockReveal";
 import { HoistPlatformPlate, UniversitySystemsPlate } from "./SystemDiagram";
@@ -36,6 +40,9 @@ const ProjectGalleryVisual = ({ project }: { project: Project }) => {
         to={`/work/${project.slug}`}
         className={styles.galleryStageLink}
         aria-label={`View ${project.title} case study — currently showing ${current.title}`}
+        onClick={() =>
+          trackProjectClick(project.title, project.category, "selected_work_gallery")
+        }
       >
         <div className={styles.galleryFrame}>
           <img
@@ -78,6 +85,14 @@ const ProjectGalleryVisual = ({ project }: { project: Project }) => {
               target="_blank"
               rel="noopener noreferrer"
               className={styles.galleryOpenLink}
+              onClick={() =>
+                trackExternalProjectClick(
+                  project.title,
+                  project.category,
+                  current.url!,
+                  "selected_work_gallery"
+                )
+              }
             >
               <span>Open</span>
               <ArrowUpRight size={13} aria-hidden="true" />
@@ -107,6 +122,9 @@ const ProjectVisual = ({
         className={styles.mediaLink}
         aria-label={`View ${project.title} case study`}
         data-project-media
+        onClick={() =>
+          trackProjectClick(project.title, project.category, "selected_work_media")
+        }
       >
         <div className={styles.mobileStage}>
           <div className={styles.phoneBezel}>
@@ -140,6 +158,9 @@ const ProjectVisual = ({
         className={styles.mediaLink}
         aria-label={`View ${project.title} case study`}
         data-project-media
+        onClick={() =>
+          trackProjectClick(project.title, project.category, "selected_work_media")
+        }
       >
         <div
           className={`${styles.screenshotFrame} ${isLead ? styles.leadFrame : ""}`}
@@ -164,6 +185,9 @@ const ProjectVisual = ({
         className={styles.mediaLink}
         aria-label={`View ${project.title} case study`}
         data-project-media
+        onClick={() =>
+          trackProjectClick(project.title, project.category, "selected_work_media")
+        }
       >
         <div className={styles.diagramWrap}>
           <UniversitySystemsPlate />
@@ -354,6 +378,13 @@ export const SelectedWork = () => {
                     <Link
                       to={`/work/${leadProject.slug}`}
                       className={styles.caseStudyLink}
+                      onClick={() =>
+                        trackProjectClick(
+                          leadProject.title,
+                          leadProject.category,
+                          "selected_work_lead"
+                        )
+                      }
                     >
                       <span>View case study</span>
                       <ArrowUpRight size={16} aria-hidden="true" />
@@ -364,6 +395,14 @@ export const SelectedWork = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.liveLink}
+                        onClick={() =>
+                          trackExternalProjectClick(
+                            leadProject.title,
+                            leadProject.category,
+                            leadProject.links[0].url,
+                            "selected_work_lead"
+                          )
+                        }
                       >
                         <span>{leadProject.links[0].label}</span>
                         <ArrowUpRight size={14} aria-hidden="true" />
@@ -426,6 +465,14 @@ export const SelectedWork = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className={styles.portalLink}
+                          onClick={() =>
+                            trackExternalProjectClick(
+                              project.title,
+                              project.category,
+                              link.url,
+                              "selected_work_portal"
+                            )
+                          }
                         >
                           <span>{link.label}</span>
                           <ArrowUpRight size={13} aria-hidden="true" />
@@ -438,6 +485,13 @@ export const SelectedWork = () => {
                     <Link
                       to={`/work/${project.slug}`}
                       className={styles.caseStudyLink}
+                      onClick={() =>
+                        trackProjectClick(
+                          project.title,
+                          project.category,
+                          "selected_work_row"
+                        )
+                      }
                     >
                       <span>View case study</span>
                       <ArrowUpRight size={16} aria-hidden="true" />
@@ -448,6 +502,14 @@ export const SelectedWork = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.liveLink}
+                        onClick={() =>
+                          trackExternalProjectClick(
+                            project.title,
+                            project.category,
+                            primaryLink.url,
+                            "selected_work_row"
+                          )
+                        }
                       >
                         <span>{primaryLink.label}</span>
                         <ArrowUpRight size={14} aria-hidden="true" />
