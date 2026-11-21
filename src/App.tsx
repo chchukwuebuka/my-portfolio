@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import AnalyticsTracker from "./components/AnalyticsTracker";
 import ScrollManager from "./components/ScrollManager";
 import SmoothScroll from "./components/SmoothScroll";
 import HomePage from "./pages/HomePage";
@@ -32,6 +33,7 @@ const App = () => {
       <a href="#main-content" className="skip-link">
         Skip to content
       </a>
+      <AnalyticsTracker />
       <SmoothScroll />
       <ScrollManager />
       <Navbar />
