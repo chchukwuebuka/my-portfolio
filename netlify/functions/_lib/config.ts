@@ -114,8 +114,8 @@ export function getGA4Config(): GA4Config {
   if (!propertyId || !/^\d+$/.test(propertyId)) {
     missing.push(
       rawPropertyId
-        ? "GA4_PROPERTY_ID (must be numeric property ID e.g. 16387949301, not G- Measurement ID)"
-        : "GA4_PROPERTY_ID"
+          ? "GA4_PROPERTY_ID (must be numeric property ID e.g. 565407830, not G- Measurement ID)"
+          : "GA4_PROPERTY_ID"
     );
   }
   if (!serviceAccountEmail || !serviceAccountEmail.includes("@")) {

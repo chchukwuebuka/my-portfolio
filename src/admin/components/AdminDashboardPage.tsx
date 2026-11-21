@@ -175,14 +175,18 @@ export const AdminDashboardPage = () => {
 
   const handleAuthFailure = useCallback(
     (err: unknown): boolean => {
-      if (err instanceof AdminApiError && (err.status === 401 || err.status === 403)) {
-        clearClientAnalyticsCache();
-        navigate("/admin/analytics/login?error=session_expired", { replace: true });
-        return true;
-      }
-      return false;
-    },
-    [navigate]
+        if (
+          err instanceof AdminApiError &&
+          (err.status === 401 ||
+            (err.status === 403 && err.code === "FORBIDDEN"))
+        ) {
+          clearClientAnalyticsCache();
+          navigate("/admin/analytics/login?error=session_expired", { replace: true });
+          return true;
+        }
+        return false;
+      },
+      [navigate]
   );
 
   // Verify server-side session on mount
@@ -195,6 +199,10 @@ export const AdminDashboardPage = () => {
           const returnTo = encodeURIComponent(window.location.pathname);
           navigate(`/admin/analytics/login?returnTo=${returnTo}`, { replace: true });
           return;
+        }
+        const currentUrl = new URL(window.location.href);
+        if (currentUrl.searchParams.has("code") || currentUrl.searchParams.has("state")) {
+          window.history.replaceState({}, "", currentUrl.pathname);
         }
         setSession(res);
         setAuthChecking(false);

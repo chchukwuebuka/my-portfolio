@@ -223,6 +223,40 @@ export async function withCache<T>(
   return { data, cached: false, updatedAt };
 }
 
+interface GoogleApiErrorBody {
+  error?: {
+    message?: string;
+    status?: string;
+    details?: Array<{ reason?: string }>;
+  };
+}
+
+export function classifyGA4Forbidden(
+  propertyId: string,
+  body: GoogleApiErrorBody | null
+): GA4Error {
+  const message = body?.error?.message ?? "";
+  const hasDisabledReason =
+    body?.error?.details?.some((d) => d?.reason === "SERVICE_DISABLED") ?? false;
+
+  if (
+    hasDisabledReason ||
+    /has not been used in project|is disabled|Enable it by visiting/i.test(message)
+  ) {
+    return new GA4Error(
+      502,
+      "GA4_API_DISABLED",
+      "Google Analytics Data API is not enabled in your Google Cloud project. Enable 'Google Analytics Data API' in Google Cloud Console → APIs & Services → Library, wait ~1 minute, and retry."
+    );
+  }
+
+  return new GA4Error(
+    502,
+    "GA4_PERMISSION_DENIED",
+    `GA4 denied access for property ${propertyId}. Verify that (1) GA4_PROPERTY_ID in Netlify is your numeric Property ID (e.g. 565407830, not a Data Stream ID), and (2) your service account email has Viewer access under GA4 Admin → Property Access Management.`
+  );
+}
+
 async function callGA4Endpoint(
   endpoint: "runReport" | "runRealtimeReport",
   body: Record<string, unknown>
@@ -279,11 +313,13 @@ async function callGA4Endpoint(
     }
 
     if (res.status === 403) {
-      throw new GA4Error(
-        403,
-        "GA4_PERMISSION_DENIED",
-        "The service account does not have Viewer access to this GA4 property or the Google Analytics Data API is not enabled."
-      );
+      let errorBody: GoogleApiErrorBody | null = null;
+      try {
+        errorBody = (await res.json()) as GoogleApiErrorBody;
+      } catch {
+        errorBody = null;
+      }
+      throw classifyGA4Forbidden(propertyId, errorBody);
     }
 
     if (res.status === 400) {
