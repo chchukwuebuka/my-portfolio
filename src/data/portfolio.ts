@@ -516,7 +516,7 @@ export const portfolioData = {
       imageAlt:
         "Cookeaze mobile application showing curated Nigerian and global recipes alongside the Sous Chef AI assistant",
       links: [
-        { label: "Visit Cookeaze", url: "https://cookeaze.com", kind: "primary" },
+        { label: "Visit Cookeaze", url: "https://cookeaze.app", kind: "primary" },
       ],
       highlights: [
         "AI-powered Sous Chef assistant supporting contextual recipe guidance and meal planning",
@@ -1005,7 +1005,7 @@ export const portfolioData = {
       ],
       shippedLinks: [
         { label: "Viicsoft Solutions", url: "https://viicsoft.dev/" },
-        { label: "Cookeaze", url: "https://cookeaze.com" },
+        { label: "Cookeaze", url: "https://cookeaze.app" },
       ],
     },
     {
