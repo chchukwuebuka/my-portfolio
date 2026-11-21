@@ -78,8 +78,10 @@ export function getGA4Config(): GA4Config {
   const rawPropertyId = readEnv("GA4_PROPERTY_ID");
   const propertyId = rawPropertyId.replace(/^properties\//i, "").trim();
 
-  let serviceAccountEmail = readEnv("GA4_SERVICE_ACCOUNT_EMAIL");
-  let rawPrivateKey = process.env.GA4_PRIVATE_KEY ?? "";
+  let serviceAccountEmail =
+    readEnv("GA4_SERVICE_ACCOUNT_EMAIL") || readEnv("client_email");
+  let rawPrivateKey =
+    process.env.GA4_PRIVATE_KEY ?? process.env.private_key ?? "";
 
   // If the entire service account JSON was pasted into GA4_PRIVATE_KEY, extract cleanly
   const trimmedKey = rawPrivateKey.trim();
@@ -134,27 +136,27 @@ export function getGA4Config(): GA4Config {
   };
 }
 
-  export function getMissingGA4Keys(): string[] {
-    try {
-      getGA4Config();
-      return [];
-    } catch (err) {
-      if (err instanceof ConfigError) {
-        return err.missingKeys;
-      }
-      return ["GA4_CONFIG"];
+export function getMissingGA4Keys(): string[] {
+  try {
+    getGA4Config();
+    return [];
+  } catch (err) {
+    if (err instanceof ConfigError) {
+      return err.missingKeys;
     }
+    return ["GA4_CONFIG"];
   }
+}
 
-  export function isGA4Configured(): boolean {
-    return getMissingGA4Keys().length === 0;
-  }
+export function isGA4Configured(): boolean {
+  return getMissingGA4Keys().length === 0;
+}
 
-  export function isOAuthConfigured(requestUrl?: string): boolean {
-    try {
-      getOAuthConfig(requestUrl);
-      return true;
-    } catch {
-      return false;
-    }
+export function isOAuthConfigured(requestUrl?: string): boolean {
+  try {
+    getOAuthConfig(requestUrl);
+    return true;
+  } catch {
+    return false;
   }
+}

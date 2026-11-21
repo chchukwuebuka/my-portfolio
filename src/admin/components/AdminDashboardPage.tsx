@@ -510,7 +510,7 @@ export const AdminDashboardPage = () => {
                 </>
               ) : (
                 <>
-                  Add <code>GA4_PROPERTY_ID=16387949301</code>,{" "}
+                  Add <code>GA4_PROPERTY_ID=565407830</code>,{" "}
                   <code>GA4_SERVICE_ACCOUNT_EMAIL</code>, and{" "}
                   <code>GA4_PRIVATE_KEY</code> in your Netlify environment
                   variables and grant the service account <strong>Viewer</strong>{" "}
