@@ -75,20 +75,53 @@ export function getOAuthConfig(requestUrl?: string): OAuthConfig {
 }
 
 export function getGA4Config(): GA4Config {
-  const propertyId = readEnv("GA4_PROPERTY_ID");
-  const serviceAccountEmail = readEnv("GA4_SERVICE_ACCOUNT_EMAIL");
-  const rawPrivateKey = process.env.GA4_PRIVATE_KEY ?? "";
+  const rawPropertyId = readEnv("GA4_PROPERTY_ID");
+  const propertyId = rawPropertyId.replace(/^properties\//i, "").trim();
 
-  // Support both escaped "\n" in Netlify env vars and multiline PEM strings
+  let serviceAccountEmail = readEnv("GA4_SERVICE_ACCOUNT_EMAIL");
+  let rawPrivateKey = process.env.GA4_PRIVATE_KEY ?? "";
+
+  // If the entire service account JSON was pasted into GA4_PRIVATE_KEY, extract cleanly
+  const trimmedKey = rawPrivateKey.trim();
+  if (trimmedKey.startsWith("{") && trimmedKey.endsWith("}")) {
+    try {
+      const parsed = JSON.parse(trimmedKey) as {
+        private_key?: string;
+        client_email?: string;
+      };
+      if (typeof parsed.private_key === "string") {
+        rawPrivateKey = parsed.private_key;
+      }
+      if (!serviceAccountEmail && typeof parsed.client_email === "string") {
+        serviceAccountEmail = parsed.client_email.trim();
+      }
+    } catch {
+      // Fall through to standard PEM validation below
+    }
+  }
+
+  // Support quoted strings, single/double escaped "\n", and multiline PEM keys
   const privateKey = rawPrivateKey
+    .trim()
     .replace(/^["']|["']$/g, "")
+    .replace(/\\\\n/g, "\n")
     .replace(/\\n/g, "\n")
     .trim();
 
   const missing: string[] = [];
-  if (!propertyId || !/^\d+$/.test(propertyId)) missing.push("GA4_PROPERTY_ID");
-  if (!serviceAccountEmail) missing.push("GA4_SERVICE_ACCOUNT_EMAIL");
-  if (!privateKey.includes("BEGIN PRIVATE KEY")) missing.push("GA4_PRIVATE_KEY");
+  if (!propertyId || !/^\d+$/.test(propertyId)) {
+    missing.push(
+      rawPropertyId
+        ? "GA4_PROPERTY_ID (must be numeric property ID e.g. 16387949301, not G- Measurement ID)"
+        : "GA4_PROPERTY_ID"
+    );
+  }
+  if (!serviceAccountEmail || !serviceAccountEmail.includes("@")) {
+    missing.push("GA4_SERVICE_ACCOUNT_EMAIL");
+  }
+  if (!privateKey.includes("BEGIN") || !privateKey.includes("PRIVATE KEY")) {
+    missing.push("GA4_PRIVATE_KEY");
+  }
 
   if (missing.length > 0) {
     throw new ConfigError(missing);
@@ -101,20 +134,27 @@ export function getGA4Config(): GA4Config {
   };
 }
 
-export function isGA4Configured(): boolean {
-  try {
-    getGA4Config();
-    return true;
-  } catch {
-    return false;
+  export function getMissingGA4Keys(): string[] {
+    try {
+      getGA4Config();
+      return [];
+    } catch (err) {
+      if (err instanceof ConfigError) {
+        return err.missingKeys;
+      }
+      return ["GA4_CONFIG"];
+    }
   }
-}
 
-export function isOAuthConfigured(requestUrl?: string): boolean {
-  try {
-    getOAuthConfig(requestUrl);
-    return true;
-  } catch {
-    return false;
+  export function isGA4Configured(): boolean {
+    return getMissingGA4Keys().length === 0;
   }
-}
+
+  export function isOAuthConfigured(requestUrl?: string): boolean {
+    try {
+      getOAuthConfig(requestUrl);
+      return true;
+    } catch {
+      return false;
+    }
+  }

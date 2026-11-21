@@ -38,6 +38,7 @@ export interface SessionResponse {
   authenticated: boolean;
   oauthConfigured: boolean;
   ga4Configured: boolean;
+  ga4MissingKeys?: string[];
   csrfToken?: string;
   expiresAt?: number;
   user?: SessionUser;

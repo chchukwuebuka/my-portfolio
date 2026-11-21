@@ -236,7 +236,7 @@ async function callGA4Endpoint(
       throw new GA4Error(
         503,
         "GA4_NOT_CONFIGURED",
-        "Google Analytics Data API credentials are not yet configured in Netlify environment variables."
+          `Missing or invalid Netlify Function environment variable(s): ${err.missingKeys.join(", ")}. Verify spelling, enable the Functions scope in Netlify, and trigger a redeploy.`
       );
     }
     throw new GA4Error(500, "GA4_CONFIG_ERROR", "Unable to initialize GA4 client.");

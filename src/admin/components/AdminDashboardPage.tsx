@@ -167,11 +167,11 @@ export const AdminDashboardPage = () => {
     section === "realtime"
       ? realtime.data?.updatedAt
       : overview.data?.updatedAt ??
-        traffic.data?.updatedAt ??
-        pages.data?.updatedAt ??
-        audience.data?.updatedAt ??
-        events.data?.updatedAt ??
-        null;
+      traffic.data?.updatedAt ??
+      pages.data?.updatedAt ??
+      audience.data?.updatedAt ??
+      events.data?.updatedAt ??
+      null;
 
   const handleAuthFailure = useCallback(
     (err: unknown): boolean => {
@@ -365,9 +365,8 @@ export const AdminDashboardPage = () => {
                   <Link
                     to={item.path}
                     onClick={() => setDrawerOpen(false)}
-                    className={`${styles.navItem} ${
-                      section === item.id ? styles.navItemActive : ""
-                    }`}
+                    className={`${styles.navItem} ${section === item.id ? styles.navItemActive : ""
+                      }`}
                     aria-current={section === item.id ? "page" : undefined}
                   >
                     <span className={styles.navItemLeft}>
@@ -438,9 +437,8 @@ export const AdminDashboardPage = () => {
                     key={preset.id}
                     type="button"
                     onClick={() => handlePresetClick(preset.id)}
-                    className={`${styles.rangeBtn} ${
-                      range.preset === preset.id ? styles.rangeBtnActive : ""
-                    }`}
+                    className={`${styles.rangeBtn} ${range.preset === preset.id ? styles.rangeBtnActive : ""
+                      }`}
                   >
                     {preset.label}
                   </button>
@@ -502,12 +500,23 @@ export const AdminDashboardPage = () => {
         <main className={styles.content}>
           {session && !session.ga4Configured && (
             <div className={styles.infoBanner}>
-              <strong>GA4 Reporting API setup pending:</strong> Add{" "}
-              <code>GA4_PROPERTY_ID=16387949301</code>,{" "}
-              <code>GA4_SERVICE_ACCOUNT_EMAIL</code>, and{" "}
-              <code>GA4_PRIVATE_KEY</code> in your Netlify environment variables
-              and grant the service account <strong>Viewer</strong> access on
-              your GA4 property.
+              <strong>GA4 Reporting API setup pending:</strong>{" "}
+              {session.ga4MissingKeys && session.ga4MissingKeys.length > 0 ? (
+                <>
+                  Missing or invalid Netlify Function env var(s):{" "}
+                  <code>{session.ga4MissingKeys.join(", ")}</code>. Ensure the{" "}
+                  <strong>Functions</strong> scope is enabled in Netlify and
+                  trigger a redeploy.
+                </>
+              ) : (
+                <>
+                  Add <code>GA4_PROPERTY_ID=16387949301</code>,{" "}
+                  <code>GA4_SERVICE_ACCOUNT_EMAIL</code>, and{" "}
+                  <code>GA4_PRIVATE_KEY</code> in your Netlify environment
+                  variables and grant the service account <strong>Viewer</strong>{" "}
+                  access on your GA4 property.
+                </>
+              )}
             </div>
           )}
 

@@ -1,4 +1,8 @@
-import { isGA4Configured, isOAuthConfigured } from "./_lib/config.ts";
+import {
+  getMissingGA4Keys,
+  isGA4Configured,
+  isOAuthConfigured,
+} from "./_lib/config.ts";
 import { errorResponse, jsonResponse } from "./_lib/http.ts";
 import { requireAdminSession } from "./_lib/session.ts";
 
@@ -29,6 +33,7 @@ export default async function handler(req: Request): Promise<Response> {
     authenticated: true,
     oauthConfigured,
     ga4Configured,
+    ga4MissingKeys: getMissingGA4Keys(),
     csrfToken: auth.session.csrfToken,
     expiresAt: auth.session.expiresAt,
     user: {
